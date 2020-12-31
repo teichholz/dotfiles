@@ -1,0 +1,52 @@
+font_family      "Source Code Pro"
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+font_size 20
+
+cursor #ff00ff
+cursor_text_color #111111
+cursor_shape block
+cursor_blink_interval      0.0
+cursor_stop_blinking_after 15.0
+
+open_url_with default
+
+enable_audio_bell no
+
+foreground #839496
+background #002833
+
+selection_foreground #93a1a1
+selection_background #003541
+
+window_margin_width 5.0
+window_padding_width 10.0
+
+tab_bar_style seperator
+
+editor emacs
+
+macos_hide_titlebar yes
+
+map ctrl+shift+enter new_window
+map ctrl+shift+n next_window
+map ctrl+shift+p previous_window
+
+map ctrl+shift+right next_tab
+map ctrl+shift+left previous_tab
+map ctrl+shift+t new_tab
+map ctrl+shift+q close_tab
+
+map ctrl+shift+plus change_font_size all +2.0
+map ctrl+shift+minus change_font_size all -2.0
+map ctrl+shift+equal change_font_size all 0
+
+kitty_mod ctrl+shift
+
+map ctrl+shift+k edit_config_file
+
+
+
+
+

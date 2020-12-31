@@ -1,0 +1,187 @@
+; vim:ft=cfg
+;
+
+[settings]
+pseudo-transparency = true
+;--------------------------------------------
+; colors                                    ;
+;--------------------------------------------
+
+[colors]
+black = #1B1B1B
+red = #A70A2A
+
+; time = ${colors.activeWorkspace}
+; timeFontColor = ${colors.background}
+
+;--------------------------------------------
+; bars                                      ;
+;--------------------------------------------
+
+; [bar/i3]
+; bottom = true
+; width = 50
+; heigth = 50
+
+
+[bar/bottom]
+monitor = eDP
+bottom = true
+width = 100%
+height = 30
+
+background = ${colors.black}
+foreground = #eefafafa
+linecolor = ${colors.red}
+
+spacing = 3
+lineheight = 2
+padding-right = 4
+module-margin-left = 0
+module-margin-right = 6
+
+border-top = 2
+border-top-color = #333333
+
+; overline-size = 2
+
+modules-left = i3
+modules-right = audio battery date
+
+locale = de_DE.UTF-8
+
+;--------------------------------------------
+; modules                                   ;
+;--------------------------------------------
+
+[module/battery]
+type = internal/battery
+; This is useful in case the battery never reports 100% charge
+full-at = 99
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = AC
+
+; If an inotify event haven't been reported in this many
+; seconds, manually poll for new values.
+;
+; Needed as a fallback for systems that don't report events
+; on sysfs/procfs.
+;
+; Disable polling by setting the interval to 0.
+;
+; Default: 5
+poll-interval = 5
+format = Uhrzeit: %label%
+
+
+[module/i3]
+type = internal/i3
+
+; ws-icon-0 = 1;♚
+; ws-icon-1 = 2;♛
+; ws-icon-2 = 3;♜
+; ws-icon-3 = 4;♫
+
+index-sort = true ; nach index sortieren
+enable-click = true
+
+format = <label-state> <label-mode>
+
+; Available tokens:
+;   %mode%
+; Default: %mode%
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = #e60053
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-focused = %name% %icon%
+label-focused-foreground = #ffffff
+label-focused-background = #3f3f3f
+label-focused-overline = ${colors.red}
+label-focused-padding = 4
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-unfocused = %name% %icon%
+label-unfocused-padding = 4
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-visible = %name%
+label-visible-underline = #555555
+label-visible-padding = 4
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-urgent = %name%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-padding = 4
+
+[module/date]
+type = internal/date
+interval = 5.0
+date = %d-%m-%Y%
+time = %H:%M
+
+format = Uhrzeit: <label>
+; format-background = ${colors.time}
+; format-padding = 50px
+; format-margin = 50px
+; format-spacing = 50px
+
+label = %time%
+; label-foreground = ${colors.red}
+
+[module/audio]
+type = internal/pulseaudio
+
+sinks = alsa_output.usb-FiiO_DigiHug_USB_Audio-01.analog-stereo
+interval = 2
+
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = Audio: <ramp-volume> <label-volume>
+
+; Available tags:
+;   <label-muted> (default)
+;   <ramp-volume>
+;   <bar-volume>
+;format-muted = <label-muted>
+
+; Available tokens:
+;   %percentage% (default)
+;label-volume = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+label-muted = 🔇 muted
+label-muted-foreground = #666
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
