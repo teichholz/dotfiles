@@ -1,12 +1,9 @@
 { inputs, config, lib, pkgs, ... }:
 
 with lib;
+with lib.my;
 with inputs;
-with import ./lib/paths.nix;
 {
-  imports = [];
-  # Common config for all nixos machines; and to ensure the flake operates
-  # soundly
   environment.variables.DOTFILES = dotFilesDir;
 
   # Configure nix and nixpkgs

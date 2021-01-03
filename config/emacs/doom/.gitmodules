@@ -1,0 +1,3 @@
+[submodule "packages/lsp-css"]
+	path = packages/lsp-css
+	url = https://github.com/emacs-lsp/lsp-css.git

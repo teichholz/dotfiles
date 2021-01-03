@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: anonymous function
+# key: fun
+# uuid: afun                  
+# --
+(${1:parameter}) => {
+    $0
+}

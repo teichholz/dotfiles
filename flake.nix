@@ -14,26 +14,28 @@
     };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
-  let lib = nixpkgs.lib // (import ./lib {lib = nixpkgs.lib;});
+  let lib = nixpkgs.lib.extend (self: super: { my = import ./lib { inherit pkgs inputs; lib = self; }; });
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; overlays = [ inputs.emacs-overlay.overlay ] ; config.allowUnfree=true;};
   in
     {
-
+      origLib = lib;
+      lib = lib.my;  # for debugging with builtin.getFlake
       nixosConfigurations."nixos" =
       lib.nixosSystem {
         inherit system;
         modules = [
           home-manager.nixosModules.home-manager
-          ./default.nix
-          ./host/hardware-configuration.nix
-          ./host/modules.nix
-          ./modules/desktop.nix
-          ./modules/options.nix
-          ./modules/emacs.nix 
-          ./modules/xdg.nix
-          ./modules/zsh.nix
-        ];
+          ./.
+          ./host
+          # ./host/hardware-configuration.nix
+          # ./host/modules.nix
+          # ./modules/desktop
+          # ./modules/options.nix
+          # ./modules/editor/emacs.nix 
+          # ./modules/xdg.nix
+          # ./modules/shell/zsh.nix
+        ] ++ (lib.my.mapModulesRec' (toString ./modules) import);
         specialArgs = { inherit inputs pkgs lib home-manager;};
       };
     };

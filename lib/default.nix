@@ -1,5 +1,19 @@
-{lib}:
-with lib;
-let libs = [(import ./paths.nix) (import ./options.nix {inherit lib;})]; in
-foldr (a: b: a // b) {} libs
+{ inputs, lib, pkgs, ... }:
+
+let
+  inherit (lib) makeExtensible attrValues foldr;
+  inherit (modules) mapModules;
+
+  modules = import ./modules.nix {
+    inherit lib;
+    self.attrs = import ./attrs.nix { inherit lib; self = {}; };
+  };
+
+  mylib = makeExtensible (self:
+    with self; mapModules ./.
+      (file: import file { inherit self lib pkgs inputs; }));
+in
+mylib.extend
+  (self: super:
+    foldr (a: b: a // b) {} (attrValues super))
      

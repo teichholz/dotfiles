@@ -1,12 +1,12 @@
 { config, lib, pkgs, inputs, ... }:
 
 with lib;
-with import ../lib/options.nix {inherit lib;};
+with lib.my;
 let cfg = config.modules.editors.emacs;
 in {
 
   options.modules.editors.emacs = {
-    enable = mkBoolOpt false;
+    enable = mkBoolOpt true;
     doom = {
       enable  = mkBoolOpt true;
       fromSSH = mkBoolOpt false;
@@ -48,8 +48,14 @@ in {
     ];
 
     env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
+    env.EDITOR = "emacsclient";
 
     modules.shell.zsh.rcFiles = [ "${configDir}/emacs/aliases.zsh" ];
+
+
+    home.configFile = {
+      ".doom.d" = { source = "${configDir}/emacs/doom"; recursive = false; };
+    };
 
     # fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
   };

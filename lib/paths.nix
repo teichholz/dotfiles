@@ -1,3 +1,4 @@
+{...}:
 rec {
   dotFilesDir = toString ../.;
   modulesDir  = "${dotFilesDir}/modules";

@@ -1,0 +1,34 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+super + Return
+	kitty
+
+# program launcher
+super + @space
+	# krunner
+	rofi -show run -theme solarized
+
+super + Escape
+	systemmonitor
+
+# make sxhkd reload its configuration files:
+super + shift + Escape
+	pkill -USR1 -x sxhkd
+
+# Helligkeit
+
+XF86MonBrightnessUp
+	xbacklight -inc 5
+XF86MonBrightnessDown
+	xbacklight -dec 5
+
+# Systmctl
+super + s + {s,r,p}
+	systemctl { suspend, restart, poweroff }
+
+# Screenshot
+super + p
+	  maim -s | xclip -selection clipboard -t image/png

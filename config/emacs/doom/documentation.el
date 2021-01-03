@@ -1,0 +1,6 @@
+(set-docsets! 'python-mode "Python 3")
+(set-docsets! 'js2-mode "JavaScript NodeJS Express")
+(set-docsets! 'racket-mode "Racket")
+(set-docsets! 'js2-mode "JavaScript")
+(set-docsets! 'c++-mode "C++")
+(set-docsets! 'c-mode "C")
