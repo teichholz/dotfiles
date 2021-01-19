@@ -18,6 +18,7 @@ in {
     user.packages = with pkgs; [
       stack
       hlint # linter
+      ormolu # formatting
     ];
   };
 }
