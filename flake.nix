@@ -35,7 +35,7 @@
           # ./modules/editor/emacs.nix 
           # ./modules/xdg.nix
           # ./modules/shell/zsh.nix
-        ] ++ (lib.my.mapModulesRec' (toString ./modules) import);
+        ]; #++ (lib.my.mapModulesRec' (toString ./modules) import);
         specialArgs = { inherit inputs pkgs lib home-manager;};
       };
     };
