@@ -1,9 +1,9 @@
 {config, pkgs, inputs, lib, ...}:
 with lib;
 let pathMnt = /mnt/etc/nixos/hardware-configuration.nix; 
-    patRoot = /etc/nixos/hardware-configuration.nix; in 
+    pathRoot = /etc/nixos/hardware-configuration.nix; in 
 {
-    imports = [(if (lib.pathExists pathMnt) then pathMnt else if (lib.pathExists pathMnt) then pathMnt else ./hardware-configuration.nix)];
+    imports = [(if (lib.pathExists pathMnt) then pathMnt else if (lib.pathExists pathRoot) then pathRoot else ./hardware-configuration.nix)];
     networking.hostName = "tim-pc";
     i18n.defaultLocale = mkDefault "de_DE.UTF-8";
     time.timeZone = mkDefault "Germany/Berlin";
