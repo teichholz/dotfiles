@@ -11,6 +11,4 @@ let pathMnt = /mnt/etc/nixos/hardware-configuration.nix;
     # moonlander / ergodox / planck
     hardware.keyboard.zsa.enable = true;
     user.packages = with pkgs; [wally-cli];
-
-    boot.loader.systemd-boot.enable = true; # (for UEFI systems only)
 }
