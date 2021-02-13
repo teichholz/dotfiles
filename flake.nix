@@ -21,7 +21,7 @@
     {
       origLib = lib;
       lib = lib.my;  # for debugging with builtin.getFlake
-      nixosConfigurations."nixos" =
+      nixosConfigurations."tim-pc" =
       lib.nixosSystem {
         inherit system;
         modules = [

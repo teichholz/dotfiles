@@ -13,5 +13,4 @@ let pathMnt = /mnt/etc/nixos/hardware-configuration.nix;
     user.packages = with pkgs; [wally-cli];
 
     boot.loader.systemd-boot.enable = true; # (for UEFI systems only)
-    boot.loader.grub.useOSProber = true; 
 }
