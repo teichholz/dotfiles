@@ -46,6 +46,7 @@ in {
       fd
       fzf
       tldr
+      jq
     ];
 
     env = {

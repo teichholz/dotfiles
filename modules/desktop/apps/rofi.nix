@@ -24,6 +24,12 @@ in {
       })
       (makeDesktopItem {
         name = "rofi-filemenu";
+        desktopName = "Open Application";
+        icon = "folder";
+        exec = "${binDir}/rofi/appmenu";
+      })
+      (makeDesktopItem {
+        name = "rofi-filemenu";
         desktopName = "Open Directory in Terminal";
         icon = "folder";
         exec = "${binDir}/rofi/filemenu";

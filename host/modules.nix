@@ -15,5 +15,12 @@
         theme = {
             active = "alucard";
         };
+        app = {
+            browsers = {
+                qutebrowser = true;
+            };
+            bspwm = true;
+            kde = false;
+        };
     };
 }

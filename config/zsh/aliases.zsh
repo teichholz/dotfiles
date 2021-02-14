@@ -14,3 +14,5 @@ alias wget='wget -c'
 alias nr='sudo nixos-rebuild'
 alias ls=exa
 alias l=exa
+alias cat=bat
+alias o=xdg-open
