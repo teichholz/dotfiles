@@ -3,7 +3,7 @@
     {
       # Core dependencies.
       # Two inputs so I can track them separately at different rates.
-      nixpkgs.url          = "github:nixos/nixpkgs/nixos-unstable";
+      nixpkgs.url          = "nixpkgs/nixos-unstable";
 
       home-manager.url   = "github:rycee/home-manager/master";
       home-manager.inputs.nixpkgs.follows = "nixpkgs";

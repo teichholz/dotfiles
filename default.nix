@@ -12,6 +12,7 @@ with inputs;
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
     nixPath = [
+      "nixpkgs=${nixpkgs}"
       "nixpkgs-overlays=${dotFilesDir}/overlays"
       "dotfiles=${dotFilesDir}"
     ];
@@ -32,7 +33,7 @@ with inputs;
   system.stateVersion = "20.09";
 
   # Use the latest kernel
-  boot.kernelPackages = pkgs.linuxPackages_5_9;
+  boot.kernelPackages = pkgs.linuxPackages_5_10;
 
   boot.loader = {
     efi.canTouchEfiVariables = true;

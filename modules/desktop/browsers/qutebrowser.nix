@@ -8,7 +8,7 @@
 with lib;
 with lib.my;
 let cfg = config.modules.desktop.browsers.qutebrowser;
-    pkg = pkgs.unstable.qutebrowser;
+    pkg = pkgs.qutebrowser;
 in {
   options.modules.desktop.browsers.qutebrowser = with types; {
     enable = mkBoolOpt false;
