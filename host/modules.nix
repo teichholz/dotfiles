@@ -12,5 +12,8 @@
         dev = {
             haskell.enable = true;
         };
+        theme = {
+            active = "alucard";
+        }
     };
 }

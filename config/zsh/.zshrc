@@ -7,18 +7,21 @@ if ! zgen saved; then
   zgen load zdharma/history-search-multi-word
   zgen load zsh-users/zsh-completions src
   zgen load junegunn/fzf shell
-  zgen prezto
   [ -z "$SSH_CONNECTION" ] && zgen load zdharma/fast-syntax-highlighting
   zgen save
 fi
 
+# Prompt
+[ -d "$ZGEN_DIR/pure" ] || git clone https://github.com/sindresorhus/pure.git "$ZGEN_DIR/pure"
+fpath+="$ZGEN_DIR/pure"
+autoload -U promptinit; promptinit
+prompt pure
 
 source $ZDOTDIR/config.zsh
 if [[ $TERM != dumb ]]; then
   source $ZDOTDIR/keybinds.zsh
   source $ZDOTDIR/completion.zsh
   source $ZDOTDIR/aliases.zsh
-  source $ZDOTDIR/.zpreztorc
 
   ##
   function _cache {

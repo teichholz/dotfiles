@@ -39,6 +39,7 @@ if is-at-least 5.0.8; then
     done
   done
 fi
+
 # Open current prompt in external editor
 autoload -Uz edit-command-line; zle -N edit-command-line
 bindkey '^ ' edit-command-line
@@ -113,3 +114,10 @@ bindkey -rM viins '^X'
 bindkey -M viins '^X,' _history-complete-newer \
   '^X/' _history-complete-older \
   '^X`' _bash_complete-word
+
+
+# FZF
+zle     -N   fzf-file-widget
+bindkey '^T' fzf-file-widget
+zle     -N   fzf-history-widget
+bindkey '^R' fzf-history-widget

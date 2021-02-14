@@ -30,10 +30,6 @@ with lib.my;
     xclip
   ];
 
-  home.configFile = {
-    "sxhkd".source = "${configDir}/sxhkd";
-  };
-
   fonts = {
     fontDir.enable = true;
     enableGhostscriptFonts = true;
