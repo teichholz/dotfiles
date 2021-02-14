@@ -15,12 +15,16 @@
         theme = {
             active = "alucard";
         };
-        app = {
-            browsers = {
-                qutebrowser = true;
+        desktop = {
+            apps = {
+                discord.enable = true;
+                kitty.enable = true;
             };
-            bspwm = true;
-            kde = false;
+            browsers = {
+                qutebrowser.enable = true;
+            };
+            #bspwm = true;
+            #kde = false;
         };
     };
 }
