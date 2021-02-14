@@ -149,3 +149,5 @@ Arguments (UNUSED) are ignored."
 
   (define-key evil-inner-text-objects-map "q" 'my-evil-textobj-anyblock-inner-quote)
   (define-key evil-outer-text-objects-map "q" 'my-evil-textobj-anyblock-a-quote))
+
+(setq +lookup-provider-url-alist (cons '("Hoogle" "https://hoogle.haskell.org/?hoogle=%s") +lookup-provider-url-alist))

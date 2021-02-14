@@ -20,7 +20,6 @@
              (mapconcat (lambda (file) (f-relative file dir))
                         files
                         " ")))))
-
 (defun own/ae ()
   (interactive)
   (insert "ä"))

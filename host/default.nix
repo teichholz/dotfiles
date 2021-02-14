@@ -1,12 +1,11 @@
 {config, pkgs, inputs, lib, ...}:
 with lib;
-let pathMnt = /mnt/etc/nixos/hardware-configuration.nix; 
-    pathRoot = /etc/nixos/hardware-configuration.nix; in 
 {
-    imports = [(if (lib.pathExists pathMnt) then pathMnt else if (lib.pathExists pathRoot) then pathRoot else ./hardware-configuration.nix)];
-    networking.hostName = "tim-pc";
-    i18n.defaultLocale = mkDefault "de_DE.UTF-8";
-    time.timeZone = mkDefault "Germany/Berlin";
+    imports = [./hardware-configuration.nix ./modules.nix];
+    networking.hostName = "nixos";
+
+    i18n.defaultLocale = "de_DE.UTF-8";
+    time.timeZone = "Germany/Berlin";
 
     # moonlander / ergodox / planck
     hardware.keyboard.zsa.enable = true;

@@ -11,7 +11,7 @@ with lib.my;
 let cfg = config.modules.dev.haskell;
 in {
   options.modules.dev.haskell = {
-    enable = mkBoolOpt true;
+    enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {

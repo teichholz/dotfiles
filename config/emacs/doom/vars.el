@@ -79,7 +79,7 @@
 
 (setq treemacs-width 25)
 
-(setq org-directory (expand-file-name "~/Dokumente/org"))
+(setq org-directory (expand-file-name "~/doc/org"))
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq +org-code-file (concat org-directory "/code.org"))
 (setq org-startup-with-inline-images t)

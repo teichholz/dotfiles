@@ -5,7 +5,7 @@ with lib.my;
 let cfg = config.modules.shell.bitwarden;
 in {
   options.modules.shell.bitwarden = with types; {
-    enable = mkBoolOpt true;
+    enable = mkBoolOpt false;
     config = mkOpt attrs {};
   };
 

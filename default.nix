@@ -12,9 +12,7 @@ with inputs;
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
     nixPath = [
-      "nixpkgs=${nixpkgs}"
       "nixpkgs-overlays=${dotFilesDir}/overlays"
-      "home-manager=${home-manager}"
       "dotfiles=${dotFilesDir}"
     ];
     binaryCaches = [
@@ -33,11 +31,6 @@ with inputs;
   system.configurationRevision = mkIf (self ? rev) self.rev;
   system.stateVersion = "20.09";
 
-  ## Some reasonable, global defaults
-  # This is here to appease 'nix flake check' for generic hosts with no
-  # hardware-configuration.nix or fileSystem config.
-  # fileSystems."/".device = "/dev/disk/by-label/nixos";
-
   # Use the latest kernel
   boot.kernelPackages = pkgs.linuxPackages_5_9;
 
@@ -49,6 +42,7 @@ with inputs;
 
   # Just the bear necessities...
   environment.systemPackages = with pkgs; [
+    bind
     cached-nix-shell
     binutils
     coreutils

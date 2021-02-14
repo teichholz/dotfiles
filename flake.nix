@@ -21,20 +21,13 @@
     {
       origLib = lib;
       lib = lib.my;  # for debugging with builtin.getFlake
-      nixosConfigurations."tim-pc" =
+      nixosConfigurations."nixos" =
       lib.nixosSystem {
         inherit system;
         modules = [
           home-manager.nixosModules.home-manager
           ./.
           ./host
-          # ./host/hardware-configuration.nix
-          # ./host/modules.nix
-          # ./modules/desktop
-          # ./modules/options.nix
-          # ./modules/editor/emacs.nix 
-          # ./modules/xdg.nix
-          # ./modules/shell/zsh.nix
         ] ++ (lib.my.mapModulesRec' (toString ./modules) import);
         specialArgs = { inherit inputs pkgs lib home-manager;};
       };

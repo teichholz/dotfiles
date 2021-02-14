@@ -5,7 +5,7 @@ with lib.my;
 let cfg = config.modules.shell.zsh;
 in {
   options.modules.shell.zsh = with types; {
-    enable = mkBoolOpt true;
+    enable = mkBoolOpt false;
 
     aliases = mkOpt (attrsOf (either str path)) {};
 
@@ -32,7 +32,6 @@ in {
       # too soon, which means commands initialized later in my config won't get
       # completion, and running compinit twice is slow.
       enableGlobalCompInit = false;
-      promptInit = "";
     };
 
     user.shell = pkgs.zsh;

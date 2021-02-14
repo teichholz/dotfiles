@@ -10,7 +10,7 @@ with lib.my;
 let cfg = config.modules.dev.node;
 in {
   options.modules.dev.node = {
-    enable = mkBoolOpt true;
+    enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
