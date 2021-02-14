@@ -32,6 +32,7 @@ in {
       # too soon, which means commands initialized later in my config won't get
       # completion, and running compinit twice is slow.
       enableGlobalCompInit = false;
+      promptInit = "";
     };
 
     user.shell = pkgs.zsh;
