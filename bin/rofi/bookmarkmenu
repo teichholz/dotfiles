@@ -46,6 +46,13 @@ case ${BROWSER:-firefox} in
       fi
     done
     ;;
+  chromium)
+      BFILE="/home/tim/.config/chromium/Default/Bookmarks"
+      if [[ -f "$BFILE" ]]; then
+        cat $BFILE | jq  '.. | if type == "object" then {name: .name, url: .url} else empty end | select(.name != null and .url != null) | .[]' | paste - - | sed "s/\t/${SEP}/g" >>/tmp/rofi-bookmarkmenu
+        cat /tmp/rofi-bookmarkmenu | sed -e 's#&#&amp;#g' -e 's#<#&lt;#g' -e 's#>#&gt;#g' | _do_rofi
+      fi
+    ;;
   qutebrowser)
     {
       sed -e 's/ /{{::}}/' urls | awk -F'{{::}}' '{printf "%s{{::}}%s\n", $2, $1}'

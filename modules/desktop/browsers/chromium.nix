@@ -22,6 +22,7 @@ in {
         })
       ];
       env.XDG_DESKTOP_DIR = "$HOME/";
+      env.BROWSER = "chromium";
     }
   ]);
 }
