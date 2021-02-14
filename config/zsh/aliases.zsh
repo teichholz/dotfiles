@@ -12,3 +12,5 @@ alias mv='mv -i'
 alias mkdir='mkdir -p'
 alias wget='wget -c'
 alias nr='sudo nixos-rebuild'
+alias ls=exa
+alias l=exa
