@@ -8,6 +8,7 @@
             zsh.enable = true;
             bitwarden.enable = true;
             direnv.enable = true;
+            tmux.enable = true;
         };
         dev = {
             haskell.enable = true;

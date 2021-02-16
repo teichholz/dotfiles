@@ -47,6 +47,7 @@ in {
       fzf
       tldr
       jq
+      xdotool
     ];
 
     env = {

@@ -12,7 +12,7 @@ in {
     user.packages = with pkgs; [
       (writeScriptBin "rofi" ''
         #!${stdenv.shell}
-        exec ${pkgs.rofi}/bin/rofi -terminal xst -m -1 "$@"
+        exec ${pkgs.rofi}/bin/rofi -terminal kitty -m -1 "$@"
       '')
 
       # Fake rofi dmenu entries
@@ -39,13 +39,6 @@ in {
         desktopName = "Open Directory in Scratch Terminal";
         icon = "folder";
         exec = "${binDir}/rofi/filemenu -x";
-      })
-
-      (makeDesktopItem {
-        name = "lock-display";
-        desktopName = "Lock screen";
-        icon = "system-lock-screen";
-        exec = "${binDir}/zzz";
       })
     ];
   };

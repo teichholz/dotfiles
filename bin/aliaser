@@ -1,0 +1,42 @@
+#!/usr/bin/env zsh
+
+FILE="$XDG_CONFIG_HOME/zsh/aliasers"
+[ -f $FILE ] || touch $FILE
+
+while [[ $# -gt 0 ]]
+do
+    key="$1"
+    case $key in
+        -r|--remove)
+        KEY="$2"
+        sed -e "/$KEY=.*/" $FILE > $FILE
+        shift
+        shift
+        ;;
+        -a|--add)
+        KEY="$2"
+        VALUE="$3"
+        echo "$2='$3'" >> $FILE
+        shift
+        shift
+        shift
+        ;;
+        -c|--clear)
+        shift
+        : > $FILE
+        ;;
+        *)   
+        echo "$0: unknown option $1"
+        shift 
+        shift 
+        ;;
+    esac
+done
+TMPFILE="/tmp/aliaser"
+{
+    IFS=$'\n'
+    for aliasers in $(cat $FILE); do
+    echo "alias $aliasers"
+    done > $TMPFILE
+} 
+. $TMPFILE
