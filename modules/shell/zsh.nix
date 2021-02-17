@@ -49,6 +49,7 @@ in {
       jq
       xdotool
       notify-desktop
+      tree
     ];
 
     env = {

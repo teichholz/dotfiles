@@ -13,6 +13,47 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  modules.hardware = {
+    audio.enable = true;
+    ergodox.enable = true;
+    nvidia.enable = true;
+  };
+
+  services.xserver.xrandrHeads = [
+    {
+      output = "DP-2";
+      monitorConfig = ''
+        LeftOf DP-1
+      '';
+    }
+    {
+      output = "DP-1";
+      primary = true;
+    }
+  ];
+
+  # Displays
+  # services.xserver = {
+  #   # This must be done manually to ensure my screen spaces are arranged exactly
+  #   # as I need them to be *and* the correct monitor is "primary". Using
+  #   # xrandrHeads does not work.
+  #   monitorSection = ''
+  #     VendorName  "Unknown"
+  #     ModelName   "DELL U2515H"
+  #     HorizSync   30.0 - 113.0
+  #     VertRefresh 56.0 - 86.0
+  #     Option      "DPMS"
+  #   '';
+  #   screenSection = ''
+  #     Option "metamodes" "HDMI-0: nvidia-auto-select +1920+0, DVI-I-1: nvidia-auto-select +0+180, DVI-D-0: nvidia-auto-select +4480+180"
+  #     Option "SLI" "Off"
+  #     Option "MultiGPU" "Off"
+  #     Option "BaseMosaic" "off"
+  #     Option "Stereo" "0"
+  #     Option "nvidiaXineramaInfoOrder" "DFP-1"
+  #   '';
+  # };
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/aaaaafd2-49de-41ff-bcc0-25cee5a0d852";
       fsType = "ext4";

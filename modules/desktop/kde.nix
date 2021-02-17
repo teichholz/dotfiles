@@ -13,6 +13,5 @@ let cfg = config.modules.desktop.kde; in
       enableHidpi = true;
     };
     services.xserver.desktopManager.plasma5.enable = true;
-    services.xserver.videoDrivers = [ "nvidia" ];
   };
 }
