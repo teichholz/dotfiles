@@ -18,6 +18,7 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = [ tmux ];
+    programs.tmux.enable = true;
 
     modules.theme.onReload.tmux = "${tmux}/bin/tmux source-file $TMUX_HOME/extraInit";
 

@@ -5,10 +5,10 @@
             emacs.doom.enable = true;
         };
         shell = {
-            zsh.enable = true;
             bitwarden.enable = true;
             direnv.enable = true;
             tmux.enable = true;
+            zsh.enable = true;
         };
         dev = {
             haskell.enable = true;
@@ -20,6 +20,7 @@
             apps = {
                 discord.enable = true;
                 kitty.enable = true;
+                anki.enable = true;
             };
             browsers = {
                 qutebrowser.enable = true;

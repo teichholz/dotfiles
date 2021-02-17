@@ -1,5 +1,5 @@
 [ -d "$ZGEN_DIR" ] || git clone https://github.com/tarjoilija/zgen "$ZGEN_DIR"
-source $ZGEN_SOURCE
+source $ZGEN_DIR/zgen.zsh
 if ! zgen saved; then
   echo "Initializing zgen"
   zgen load hlissner/zsh-autopair autopair.zsh
@@ -22,7 +22,7 @@ if [[ $TERM != dumb ]]; then
   source $ZDOTDIR/keybinds.zsh
   source $ZDOTDIR/completion.zsh
   source $ZDOTDIR/aliases.zsh
-  aliaser
+  source aliaser
 
   ##
   function _cache {

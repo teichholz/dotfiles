@@ -34,16 +34,17 @@ with lib;
   };
 
   config = {
-      user = {
-      description = "The primary user account";
-      extraGroups = [ "wheel" ];
-      isNormalUser = true;
-      password = "1234";
-      name = let name = builtins.getEnv "USER"; in
-             if elem name [ "" "root" ]
-             then "tim" else name;
-      uid = 1000;
-    };
+      user = 
+        let user = builtins.getEnv "USER";
+            name = if elem user [ "" "root" ] then "tim" else user;
+        in {
+          inherit name;
+          description = "The primary user account";
+          extraGroups = [ "wheel" ];
+          isNormalUser = true;
+          home = "/home/${name}";
+          uid = 1000;
+        };
     # Install user packages to /etc/profiles instead. Necessary for
     # nixos-rebuild build-vm to work.
     home-manager = {
