@@ -20,6 +20,7 @@
             apps = {
                 discord.enable = true;
                 kitty.enable = true;
+                st.enable = true;
                 anki.enable = true;
             };
             browsers = {

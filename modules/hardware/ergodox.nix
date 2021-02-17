@@ -9,7 +9,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = [ pkgs.unstable.wally-cli ];
+    user.packages = [ pkgs.wally-cli ];
 
     hardware.keyboard.zsa.enable = true;
 

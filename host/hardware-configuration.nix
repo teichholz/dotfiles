@@ -14,23 +14,9 @@
   boot.extraModulePackages = [ ];
 
   modules.hardware = {
-    audio.enable = true;
     ergodox.enable = true;
     nvidia.enable = true;
   };
-
-  services.xserver.xrandrHeads = [
-    {
-      output = "DP-2";
-      monitorConfig = ''
-        LeftOf DP-1
-      '';
-    }
-    {
-      output = "DP-1";
-      primary = true;
-    }
-  ];
 
   # Displays
   # services.xserver = {

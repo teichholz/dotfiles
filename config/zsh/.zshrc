@@ -11,6 +11,8 @@ if ! zgen saved; then
   zgen save
 fi
 
+# If you want to debug, uncomment the next line
+#set -x;
 # Prompt
 [ -d "$ZGEN_DIR/pure" ] || git clone https://github.com/sindresorhus/pure.git "$ZGEN_DIR/pure"
 fpath+="$ZGEN_DIR/pure"

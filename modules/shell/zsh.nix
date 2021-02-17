@@ -50,6 +50,7 @@ in {
       xdotool
       notify-desktop
       tree
+      killall
     ];
 
     env = {

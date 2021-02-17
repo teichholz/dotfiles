@@ -8,6 +8,7 @@ let cfg = config.modules.desktop.kde; in
   };
 
   config = mkIf cfg.enable {
+    services.xserver.enable = true;
     services.xserver.displayManager.sddm = {
       enable = true;
       enableHidpi = true;
