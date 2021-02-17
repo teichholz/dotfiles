@@ -2,9 +2,9 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.term.st;
+let cfg = config.modules.desktop.apps.st;
 in {
-  options.modules.desktop.term.st = {
+  options.modules.desktop.apps.st = {
     enable = mkBoolOpt false;
   };
 

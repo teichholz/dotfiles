@@ -9,6 +9,7 @@
             direnv.enable = true;
             tmux.enable = true;
             zsh.enable = true;
+            ranger.enable = true;
         };
         dev = {
             haskell.enable = true;

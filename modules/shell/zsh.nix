@@ -79,5 +79,7 @@ in {
         ${cfg.envInit}
       '';
     };
+
+    system.userActivationScripts.cleanupZgen = "rm -fv $XDG_CACHE_HOME/zsh/*";
   };
 }
