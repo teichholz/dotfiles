@@ -25,8 +25,8 @@
             browsers = {
                 qutebrowser.enable = true;
             };
-            #bspwm = true;
-            #kde = false;
+            bspwm.enable = true;
+            kde.enable = false;
         };
     };
 }

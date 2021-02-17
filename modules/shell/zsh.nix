@@ -48,6 +48,7 @@ in {
       tldr
       jq
       xdotool
+      notify-desktop
     ];
 
     env = {

@@ -38,5 +38,5 @@ take() {
 
 r() {
   local time=$1; shift
-  sched "$time" "notify-send --urgency=critical 'Reminder' '$@'; ding";
+  sched "$time" "notify-send --urgency=critical 'Reminder' '$@';";
 }; compdef r=sched
