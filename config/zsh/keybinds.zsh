@@ -117,7 +117,5 @@ bindkey -M viins '^X,' _history-complete-newer \
 
 
 # FZF
-zle     -N   fzf-file-widget
 bindkey '^T' fzf-file-widget
-zle     -N   fzf-history-widget
 bindkey '^R' fzf-history-widget

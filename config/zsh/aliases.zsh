@@ -28,7 +28,7 @@ if command -v exa >/dev/null; then
   alias la="LC_COLLATE=C exa -la";
 fi
 
-if command -v bat >/dev/null; then 
+if command -v bat >/dev/null; then
   alias cat="bat";
 fi
 
