@@ -15,7 +15,7 @@ in {
 
     home.configFile = {
       "kitty" = { source = "${configDir}/kitty"; recursive = true; };
-      "kitty/theme.conf" = { source = "${configDir}/kitty/kitty-themes/Alucard.conf"; };
+      "kitty/theme.conf" = { source = "${configDir}/kitty/kitty-themes/themes/Alucard.conf"; };
     };
   };
 }
