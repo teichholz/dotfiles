@@ -37,6 +37,6 @@ take() {
 }; compdef take=mkdir
 
 r() {
-  local time=$1; shift
-  sched "$time" "notify-send --urgency=critical 'Reminder' '$@';";
+  local time=$1; shift;
+  sleep "${time}m" && notify-send --urgency=critical 'Reminder:' "$@" > /dev/null &;
 }; compdef r=sched

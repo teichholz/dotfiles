@@ -9,6 +9,11 @@ in {
   };
 
   config = mkIf cfg.enable {
+    modules.theme.onReload.bspwm = ''
+      ${pkgs.bspwm}/bin/bspc wm -r
+      source $XDG_CONFIG_HOME/bspwm/bspwmrc
+    '';
+
     environment.systemPackages = with pkgs; [
       lightdm
       dunst
@@ -29,7 +34,10 @@ in {
           lightdm.enable = true;
           lightdm.greeters.mini.enable = true;
         };
-        windowManager.bspwm.enable = true;
+        windowManager.bspwm = {
+          enable = true;
+          configFile = "${configDir}/bspwm/bspwmrc";
+        };
       };
     };
 

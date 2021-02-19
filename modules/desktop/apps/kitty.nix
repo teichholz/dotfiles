@@ -12,6 +12,7 @@ in {
       kitty
     ];
 
+    env.TERMINAL = "kitty";
 
     home.configFile = {
       "kitty" = { source = "${configDir}/kitty"; recursive = true; };

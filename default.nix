@@ -11,6 +11,7 @@ with inputs;
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
+    readOnlyStore = false; # for sanity
     nixPath = [
       "nixpkgs=${nixpkgs}"
       "nixpkgs-overlays=${dotFilesDir}/overlays"

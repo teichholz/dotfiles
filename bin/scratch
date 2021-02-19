@@ -17,7 +17,7 @@ elif command -v urxvt >/dev/null; then
     urxvt -name $SCRID \
           -e $SHELL -c "$CMD"
 elif command -v kitty >/dev/null; then
-    kitty --name $SCRID --title $SCRID "$CMD"
+    kitty --name $SCRID --title $SCRID bash -c "$CMD"
 elif command -v xst >/dev/null; then
     xst -t $SCRID -n $SCRID -c $SCRID \
         -f "$(xrdb -query | grep 'scratch\.font' | cut -f2)" \

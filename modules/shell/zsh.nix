@@ -51,6 +51,7 @@ in {
       notify-desktop
       tree
       killall
+      at
     ];
 
     env = {

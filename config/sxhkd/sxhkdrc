@@ -1,21 +1,15 @@
-super + alt + Escape
-	bspc quit
-
 super + {_,shift + }q
 	bspc node -{c,k}
 
-super + t
-	bspc desktop -l next
-
-super + apostrophe
-	bspc window -s last
+# super + t
+# 	bspc desktop -l next
 
 # Attach to a detached session. If none is available create a new one, rather
 # than attach to one that is already attached to elsewhere.
-super + Return
-	kitty "bash -c '(tmux ls | grep -qEv 'attached|scratch' && tmux at) || tmux'"
+super + t
+	kitty bash -c "(tmux ls | grep -qEv 'attached|scratch' && tmux at) || tmux"
 
-ctrl + super + Return
+ctrl + super + t
 	kitty
 
 # Open a disposable, floating terminal window, for quick shell commands.
@@ -27,21 +21,20 @@ super + grave
 super + shift + grave
 	emacsclient --eval "(open-scratch-frame)"
 
-# Invoke emacs-everywhere at point.
-super + e
-    emacsclient --eval "(emacs-everywhere)"
-
 super + space
 	$DOTFILES/bin/rofi/appmenu
 
-super + Tab
+super + w
 	$DOTFILES/bin/rofi/windowmenu
 
 super + backslash
-	$DOTFILES/bin/rofi/passmenu
+	$DOTFILES/bin/rofi/bookmarkmenu
 
 super + slash
 	$DOTFILES/bin/rofi/filemenu -x
+
+super + escape
+	$DOTFILES/bin/rofi/powermenu
 
 super + Escape
 	pkill -USR1 -x sxhkd

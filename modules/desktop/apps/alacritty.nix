@@ -1,21 +1,15 @@
 { config, options, lib, pkgs, ... }:
-
 with lib;
 with lib.my;
-let cfg = config.modules.shell.ranger;
+let cfg = config.modules.desktop.apps.kitty;
 in {
-  options.modules.shell.ranger = {
+  options.modules.desktop.apps.kitty = {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      ranger
+      alacritty
     ];
-
-    home.configFile = {
-      "ranger" = { source = "${configDir}/ranger"; };
-    };
-
   };
 }

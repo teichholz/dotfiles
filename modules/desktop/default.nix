@@ -14,6 +14,8 @@ with lib.my;
     maim # screenshots
     sxhkd # keybindings, wm independent
     xclip
+    xdotool
+    xorg.xwininfo
   ];
 
   fonts = {
@@ -33,10 +35,7 @@ with lib.my;
     backend = "glx";
     vSync = true;
     opacityRules = [
-      # "100:class_g = 'Firefox'"
-      # "100:class_g = 'Vivaldi-stable'"
       "100:class_g = 'VirtualBox Machine'"
-      # Art/image programs where we need fidelity
       "100:class_g = 'Gimp'"
       "100:class_g = 'Inkscape'"
       "100:class_g = 'aseprite'"
@@ -78,10 +77,22 @@ with lib.my;
     };
   };
 
+  env.GTK_DATA_PREFIX = [ "${config.system.path}" ];
+  env.QT_QPA_PLATFORMTHEME = "gtk2";
+  qt5 = { style = "gtk2"; platformTheme = "gtk2"; };
+
   services.xserver.displayManager.sessionCommands = ''
     # GTK2_RC_FILES must be available to the display manager.
     export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
   '';
 
   services.xserver.displayManager.lightdm.greeters.mini.user = config.user.name;
+
+  # Clean up leftovers, as much as we can
+  system.userActivationScripts.cleanupHome = ''
+    pushd "${config.user.home}"
+    rm -rf .compose-cache .nv .pki .dbus .fehbg
+    [ -s .xsession-errors ] || rm -f .xsession-errors*
+    popd
+  '';
 }
