@@ -1,9 +1,9 @@
 { config, options, lib, pkgs, ... }:
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.apps.kitty;
+let cfg = config.modules.desktop.apps.alacritty;
 in {
-  options.modules.desktop.apps.kitty = {
+  options.modules.desktop.apps.alacritty = {
     enable = mkBoolOpt false;
   };
 

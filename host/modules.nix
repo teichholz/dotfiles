@@ -23,6 +23,8 @@
                 kitty.enable = true;
                 st.enable = true;
                 anki.enable = true;
+                nautilus.enable = true;
+                alacritty.enable = true;
             };
             browsers = {
                 qutebrowser.enable = true;

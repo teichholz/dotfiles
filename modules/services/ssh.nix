@@ -15,6 +15,8 @@ in {
       passwordAuthentication = false;
     };
 
+    programs.ssh.startAgent = true;
+
     # user.openssh.authorizedKeys.keys =
   };
 }
