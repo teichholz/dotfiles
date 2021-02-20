@@ -36,7 +36,7 @@ in {
         };
         windowManager.bspwm = {
           enable = true;
-          configFile = "${configDir}/bspwm/bspwmrc";
+          configFile = builtins.toPath "/home/tim/.config/bspwm/bspwmrc";
         };
       };
     };

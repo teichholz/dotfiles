@@ -4,10 +4,6 @@ with lib.my;
 {
   services.xserver.enable = true;
   services.xserver.layout = "us";
-  services.xserver.screenSection = ''
-    Option "NoFlip" "true"
-  '';
-
 
   user.packages = with pkgs; [
     feh       # image viewer

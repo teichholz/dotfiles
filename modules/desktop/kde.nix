@@ -4,7 +4,7 @@ with lib.my;
 let cfg = config.modules.desktop.kde; in
 {
   options.modules.desktop.kde = {
-    enable = mkBoolOpt true;
+    enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {

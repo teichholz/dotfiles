@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-FILE="$XDG_CONFIG_HOME/zsh/aliasers"
+local FILE="$XDG_DATA_HOME/zsh/aliasers"
 [ -f $FILE ] || touch $FILE
 
 while [[ $# -gt 0 ]]
@@ -32,9 +32,9 @@ do
         ;;
     esac
 done
-TMPFILE="/tmp/aliaser"
+local TMPFILE="/tmp/aliaser"
 {
-    IFS=$'\n'
+    local IFS=$'\n'
     for aliasers in $(cat $FILE); do
     echo "alias $aliasers"
     done > $TMPFILE

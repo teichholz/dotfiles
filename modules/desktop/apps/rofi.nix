@@ -14,6 +14,7 @@ in {
         #!${stdenv.shell}
         exec ${pkgs.rofi}/bin/rofi -terminal kitty -m -1 "$@"
       '')
+      pkgs.rofi
 
       # Fake rofi dmenu entries
       (makeDesktopItem {
@@ -33,6 +34,12 @@ in {
         desktopName = "Open Directory in Terminal";
         icon = "folder";
         exec = "${binDir}/rofi/filemenu";
+      })
+      (makeDesktopItem {
+        name = "rofi-systemmenu";
+        desktopName = "Open Directory in Terminal";
+        icon = "folder";
+        exec = "${binDir}/rofi/powermenu";
       })
       (makeDesktopItem {
         name = "rofi-filemenu-scratch";

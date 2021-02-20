@@ -21,6 +21,10 @@
 
   #Displays
   services.xserver = {
+    xrandrHeads = [ "DP-2"
+                    { output= "DP-0";
+                      primary = true;
+                      monitorConfig = "Option \"RightOf\" \"DP-2\""; } ];
     # This must be done manually to ensure my screen spaces are arranged exactly
     # as I need them to be *and* the correct monitor is "primary". Using
     # xrandrHeads does not work.
@@ -32,8 +36,9 @@
 #
     #'';
     #deviceSection = ''
-      #Option "DP-1" "lg"
+      #Option "DP-0" "lg"
     #'';
+
     # screenSection = ''
     #   Option "metamodes" "HDMI-0: nvidia-auto-select +1920+0, DVI-I-1: nvidia-auto-select +0+180, DVI-D-0: nvidia-auto-select +4480+180"
     #   Option "SLI" "Off"

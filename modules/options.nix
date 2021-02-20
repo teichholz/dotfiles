@@ -72,7 +72,8 @@ with lib;
       };
     };
 
-    env.PATH = [ "$XDG_CONFIG_HOME/dotfiles/bin" "$PATH" ];
+    env.PATH = let binDir = "$XDG_CONFIG_HOME/dotfiles/bin"; in
+               ["${binDir}" "${binDir}/rofi" "$XDG_BIN_HOME" "$PATH" ];
 
     users.users.${config.user.name} = mkAliasDefinitions options.user;
 

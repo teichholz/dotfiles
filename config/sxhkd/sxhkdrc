@@ -22,19 +22,19 @@ super + shift + grave
 	emacsclient --eval "(open-scratch-frame)"
 
 super + space
-	$DOTFILES/bin/rofi/appmenu
+	appmenu
 
 super + w
-	$DOTFILES/bin/rofi/windowmenu
+	windowmenu
 
 super + backslash
-	$DOTFILES/bin/rofi/bookmarkmenu
+	bookmarkmenu
 
 super + slash
-	$DOTFILES/bin/rofi/filemenu -x
+	filemenu -x
 
 super + Escape
-	$DOTFILES/bin/rofi/powermenu
+	powermenu
 
 super + shift + Escape
 	pkill -USR1 -x sxhkd
