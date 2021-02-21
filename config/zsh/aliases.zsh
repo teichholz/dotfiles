@@ -21,6 +21,8 @@ alias aliaser="source aliaser"
 alias y='xclip -selection clipboard -in'
 alias p='xclip -selection clipboard -ou'
 
+alias spanish='chromium --new-window https://www.duolingo.com/learn https://www.spanishdict.com/translation https://espanol.lingolia.com/de/grammatik/zeitformen & > /dev/null'
+
 if command -v exa >/dev/null; then
   alias exa="exa --group-directories-first";
   alias l="exa -1";

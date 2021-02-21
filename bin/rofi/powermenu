@@ -18,7 +18,7 @@ selection=$(snd "$selection")
 
 case "$selection" in
     "Shutdown")
-        shutdown
+        poweroff
         ;;
     "Sleep")
         systemctl suspend

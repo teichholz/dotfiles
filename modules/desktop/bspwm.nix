@@ -36,8 +36,17 @@ in {
         };
         windowManager.bspwm = {
           enable = true;
-          configFile = builtins.toPath "/home/tim/.config/bspwm/bspwmrc";
         };
+      };
+    };
+
+    home-manager = {
+      users.${config.user.name} = {
+        services.sxhkd.enable = true;
+        xsession.enable = true;
+        xsession.windowManager.bspwm.enable = true;
+        xsession.windowManager.bspwm.extraConfig = builtins.readFile (builtins.toPath "${configDir}/bspwm/bspwmrc");
+        services.sxhkd.extraConfig = builtins.readFile (builtins.toPath "${configDir}/sxhkd/sxhkdrc");
       };
     };
 
@@ -51,12 +60,12 @@ in {
     };
 
     # link recursively so other modules can link files in their folders
-    home.configFile = {
-      "sxhkd".source = "${configDir}/sxhkd";
-      "bspwm" = {
-        source = "${configDir}/bspwm";
-        recursive = true;
-      };
-    };
+    # home.configFile = {
+    #   # "sxhkd".source = "${configDir}/sxhkd";
+    #   "bspwm" = {
+    #     source = "${configDir}/bspwm";
+    #     recursive = true;
+    #   };
+    # };
   };
 }

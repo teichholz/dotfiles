@@ -14,9 +14,6 @@
         dev = {
             haskell.enable = true;
         };
-        theme = {
-            active = "alucard";
-        };
         desktop = {
             apps = {
                 discord.enable = true;
@@ -32,5 +29,6 @@
             bspwm.enable = true;
             kde.enable = false;
         };
+        theme.active = "alucard";
     };
 }

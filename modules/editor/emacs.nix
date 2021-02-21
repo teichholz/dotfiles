@@ -48,6 +48,9 @@ in {
       rust-analyzer
     ];
 
+    # services.emacs.enable = true;
+    # services.emacs.package = pkgs.emacsPgtkGcc;
+
     env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
     env.EDITOR = "emacsclient";
 

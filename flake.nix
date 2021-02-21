@@ -6,7 +6,7 @@
       nixpkgs.url          = "nixpkgs/nixos-unstable";
 
       home-manager.url   = "github:rycee/home-manager/master";
-      home-manager.inputs.nixpkgs.follows = "nixpkgs";
+      # home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
       # Extras
       emacs-overlay.url  = "github:nix-community/emacs-overlay";
@@ -19,8 +19,8 @@
       pkgs = import nixpkgs { inherit system; overlays = [ inputs.emacs-overlay.overlay ] ; config.allowUnfree=true;};
   in
     {
-      origLib = lib;
-      lib = lib.my;  # for debugging with builtin.getFlake
+      #origLib = lib;
+      #lib = lib.my;  # for debugging with builtin.getFlake
       nixosConfigurations."nixos" =
       lib.nixosSystem {
         inherit system;

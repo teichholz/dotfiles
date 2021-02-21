@@ -101,6 +101,12 @@ in {
           "qutebrowser/extra/theme.py".source = ./config/qutebrowser/theme.py;
         })
       ];
+
+    home-manager = {
+      users.${config.user.name} = {
+        xsession.windowManager.bspwm.extraConfig = builtins.readFile ./config/polybar/run.sh + builtins.readFile ./config/bspwmrc;
+      };
+    };
     })
   ]);
 }

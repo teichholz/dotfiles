@@ -13,10 +13,10 @@ in {
       enable = true;
       challengeResponseAuthentication = false;
       passwordAuthentication = false;
+      startWhenNeeded = true;
     };
 
     programs.ssh.startAgent = true;
 
-    # user.openssh.authorizedKeys.keys =
   };
 }
