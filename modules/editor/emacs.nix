@@ -17,7 +17,7 @@ in {
     environment.systemPackages = with pkgs; [
       ## Emacs itself
       binutils       # native-comp needs 'as', provided by this
-      emacsPgtkGcc   # 28 + pgtk + native-comp
+      emacs   # 28 + pgtk + native-comp
 
 
       ## Doom dependencies
@@ -48,8 +48,8 @@ in {
       rust-analyzer
     ];
 
-    # services.emacs.enable = true;
-    # services.emacs.package = pkgs.emacsPgtkGcc;
+    services.emacs.enable = true;
+    services.emacs.package = pkgs.emacs;
 
     env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
     env.EDITOR = "emacsclient";

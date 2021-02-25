@@ -1,7 +1,21 @@
 { config, ... }:
+let assocs = {
+        "image/png" = [ "feh.desktop" ];
+        "image/jpg" = [ "feh.desktop" ];
+        "text/plain" = [ "emacsclient.desktop" ];
+        "application/pdf" = [ "evince.desktop" ];
+    }; in
 {
   ### A tidy $HOME is a tidy mind
-  home-manager.users.${config.user.name}.xdg.enable = true;
+  home-manager.users.${config.user.name} = {
+    xdg = {
+      enable = true;
+      mime.enable = true;
+      mimeApps.enable = true;
+      mimeApps.defaultApplications = assocs;
+      mimeApps.associations.added = assocs;
+    };
+  };
 
   environment = {
     sessionVariables = {
@@ -26,4 +40,5 @@
       WGETRC          = "$XDG_CONFIG_HOME/wgetrc";
     };
   };
+
 }

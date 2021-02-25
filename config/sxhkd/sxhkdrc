@@ -30,8 +30,8 @@ super + w
 super + backslash
 	bookmarkmenu
 
-super + slash
-	filemenu -x
+super + {_,  ctrl +}slash
+	filemenu {_,-x}
 
 super + Escape
 	powermenu
@@ -70,6 +70,10 @@ super + alt + Delete
 
 super + {_,shift +}{1-9,0}
 	bspc {desktop -f,node -d} {1-9,10};
+
+# swap desktops
+super + s
+	bspc desktop -s 'any.!focused'
 
 # expand a window by moving one of its side outward
 super + {Left,Down,Up,Right}

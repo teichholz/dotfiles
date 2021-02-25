@@ -4,7 +4,9 @@
 # for one-off, quick commands that don't warrant a dedicated terminal.
 
 SCRID=scratch
-CMD=${1:-'tmux new-session -A -s scratch -n scratch'}
+WD=${2:-$HOME}
+CMD=${1:-"tmux new-session -A -s scratch -n scratch"}
+echo "cmd is: $CMD"
 focused=$(xdotool getactivewindow)
 scratch=$(xdotool search --onlyvisible --classname $SCRID)
 if [[ -n $scratch ]]; then
@@ -13,15 +15,10 @@ if [[ -n $scratch ]]; then
     else
         xdotool windowactivate $scratch
     fi
-elif command -v urxvt >/dev/null; then
-    urxvt -name $SCRID \
-          -e $SHELL -c "$CMD"
 elif command -v kitty >/dev/null; then
-    kitty --name $SCRID --title $SCRID bash -c "$CMD"
-elif command -v xst >/dev/null; then
-    xst -t $SCRID -n $SCRID -c $SCRID \
-        -f "$(xrdb -query | grep 'scratch\.font' | cut -f2)" \
-        -e $SHELL -c "$CMD"
+    kitty -d $WD --name $SCRID --title $SCRID bash -c "$CMD"
+elif command -v alacritty >/dev/null; then
+    alacritty --working-directory $WD --class $SCRID --title $SCRID -e bash -c "$CMD"
 else
     >&2 echo "No shell to launch the scratch terminal with"
     exit 1

@@ -5,6 +5,8 @@ with lib.my;
   services.xserver.enable = true;
   services.xserver.layout = "us";
 
+  xdg.mime.enable = true;
+
   user.packages = with pkgs; [
     feh       # image viewer
     maim # screenshots
@@ -12,6 +14,8 @@ with lib.my;
     xclip
     xdotool
     xorg.xwininfo
+    zotero
+    thunderbird
   ];
 
   fonts = {

@@ -1,11 +1,12 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 cd $HOME
-DIR="$(fd -L -d 4 --type d . | rofi -dmenu -i -p "~/" -theme theme/filemenu.rasi)"
-if [ -d "$DIR" ]; then
-  cd "$DIR"
-  if [[ $1 == "-x" ]]; then
-    scratch
+DIR="$(fd -L -d 4 --type f --type d . | rofi -dmenu -i -p "~/" -theme theme/filemenu.rasi)"
+if [[ $1 == "-x" ]]; then
+  xdg-open "$DIR"
+else
+  if [ -d $DIR ]; then
+    kitty -d $DIR
   else
-    kitty
+    kitty -d "$(dirname $DIR)"
   fi
 fi

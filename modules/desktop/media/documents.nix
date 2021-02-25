@@ -8,17 +8,21 @@ let cfg = config.modules.desktop.media.documents;
 in {
   options.modules.desktop.media.documents = {
     enable = mkBoolOpt true;
-    pdf.enable = mkBoolOpt true;
-    ebook.enable = mkBoolOpt true;
   };
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      (mkIf cfg.ebook.enable calibre)
-      (mkIf cfg.pdf.enable evince)
-      (mkIf cfg.pdf.enable zathura)
+      calibre
+      evince
+      zathura
+      (makeDesktopItem {
+        name = "evince";
+        desktopName = "Evince";
+        icon = "evince";
+        exec = "${pkgs.evince}/bin/evince";
+      })
     ];
 
-    home.configFile."zathura".source = mkIf cfg.pdf.enable "${configDir}/zathura";
+    home.configFile."zathura".source = "${configDir}/zathura";
   };
 }
