@@ -14,7 +14,6 @@ alias wget='wget -c'
 alias nr='sudo nixos-rebuild'
 alias ls=exa
 alias l=exa
-alias cat=bat
 alias o=xdg-open
 alias aliaser="source aliaser"
 
@@ -36,7 +35,7 @@ cat() {
   filename="${filename%.*}"
   CAT=bat
 
-  if [ $extension -eq "md" ]; then
+  if [ $extension == "md" ]; then
     if command -v mdcat >/dev/null; then
       CAT=mdcat
     fi
