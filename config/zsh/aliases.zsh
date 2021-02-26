@@ -30,9 +30,23 @@ if command -v exa >/dev/null; then
   alias la="LC_COLLATE=C exa -la";
 fi
 
-if command -v bat >/dev/null; then
-  alias cat="bat";
-fi
+cat() {
+  filename=$(basename "$1")
+  extension="${filename##*.}"
+  filename="${filename%.*}"
+  CAT=bat
+
+  if [ $extension -eq "md" ]; then
+    if command -v mdcat >/dev/null; then
+      CAT=mdcat
+    fi
+  fi
+
+  ${CAT} "$1"
+};
+
+
+
 
 take() {
   mkdir "$1" && cd "$1";

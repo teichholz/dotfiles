@@ -51,5 +51,7 @@ with inputs;
     vim
     wget
     gnumake
+    zip
+    unzip
   ];
 }

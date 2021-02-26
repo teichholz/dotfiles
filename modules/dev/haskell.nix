@@ -19,6 +19,8 @@ in {
       stack
       hlint # linter
       ormolu # formatting
+      haskell-language-server
     ];
+
   };
 }

@@ -1,8 +1,8 @@
 super + {_,shift + }q
 	bspc node -{c,k}
 
-# super + t
-# 	bspc desktop -l next
+super + .
+	bspc desktop -l next
 
 # Attach to a detached session. If none is available create a new one, rather
 # than attach to one that is already attached to elsewhere.
@@ -15,6 +15,10 @@ ctrl + super + t
 # Open a disposable, floating terminal window, for quick shell commands.
 super + grave
 	scratch
+
+## Toggle floating/fullscreen
+super + {_, shift ,ctrl +}f
+	bspc node -t {floating,tiled,fullscreen}
 
 # Open a disposable scratch buffer in a floating Emacs window, to run arbitrary
 # code or quickly note something down.
@@ -30,7 +34,7 @@ super + w
 super + backslash
 	bookmarkmenu
 
-super + {_,  ctrl +}slash
+super + {_, ctrl +}slash
 	filemenu {_,-x}
 
 super + Escape
@@ -42,10 +46,6 @@ super + shift + Escape
 
 #
 ##
-
-## Toggle floating/fullscreen
-super + {_,ctrl + }f
-	bspc node -t ~{floating,fullscreen}
 
 
 super + {_,ctrl +}{h,j,k,l}

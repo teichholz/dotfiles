@@ -41,6 +41,7 @@ in {
       zsh
       nix-zsh-completions
       bat
+      mdcat # cat for markdown
       exa
       fasd
       fd
