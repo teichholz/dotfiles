@@ -1,6 +1,7 @@
 {config, lib, pkgs,  ...}:
 with lib;
 with lib.my;
+let myXmind = pkgs.xmind.override { gtk2 = pkgs.gtk3-x11; }; in
 {
   services.xserver.enable = true;
   services.xserver.layout = "us";

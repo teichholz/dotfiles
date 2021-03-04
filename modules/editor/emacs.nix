@@ -17,7 +17,7 @@ in {
     environment.systemPackages = with pkgs; [
       ## Emacs itself
       binutils       # native-comp needs 'as', provided by this
-      emacs   # 28 + pgtk + native-comp
+      emacsPgtkGcc   # 28 + pgtk + native-comp
 
 
       ## Doom dependencies
@@ -49,10 +49,12 @@ in {
     ];
 
     services.emacs.enable = true;
-    services.emacs.package = pkgs.emacs;
+    services.emacs.package = pkgs.emacsPgtkGcc;
 
     env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
     env.EDITOR = "emacsclient";
+
+    fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
 
     modules.shell.zsh.rcFiles = [ "${configDir}/emacs/aliases.zsh" ];
   };
