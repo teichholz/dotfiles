@@ -52,7 +52,7 @@ in {
     services.emacs.package = pkgs.emacsPgtkGcc;
 
     env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
-    env.EDITOR = "emacsclient";
+    env.EDITOR = "emacs";
 
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
 

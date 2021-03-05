@@ -10,6 +10,7 @@ let myXmind = pkgs.xmind.override { gtk2 = pkgs.gtk3-x11; }; in
 
   user.packages = with pkgs; [
     feh       # image viewer
+    imagemagick # for feh
     maim # screenshots
     sxhkd # keybindings, wm independent
     xclip
@@ -17,6 +18,9 @@ let myXmind = pkgs.xmind.override { gtk2 = pkgs.gtk3-x11; }; in
     xorg.xwininfo
     zotero
     thunderbird
+    drawio # diagrams
+    vym # mindmap
+    vue # mindmap
   ];
 
   fonts = {

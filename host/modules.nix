@@ -22,6 +22,7 @@
                 anki.enable = true;
                 nautilus.enable = true;
                 alacritty.enable = true;
+                obsidian.enable = true;
             };
             browsers = {
                 qutebrowser.enable = true;

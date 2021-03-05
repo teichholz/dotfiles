@@ -13,31 +13,31 @@
 ;; (load! "./packages/llvm-mode.el")
 
 
-(use-package! symbol-overlay)
+;; (use-package! symbol-overlay)
 ;; (use-package! dired-filter)
 ;; (use-package! dired-narrow)
 ;; (use-package! dired-subtree)
 ;; (use-package! dired-sidebar)
 ;; (use-package! dired-launch)
-(use-package! org-roam-bibtex
-  :hook (org-roam-mode . org-roam-bibtex-mode)
-  :bind (:map org-mode-map
-          (("C-c n a" . orb-note-actions))))
-(use-package! helm-bibtex
-  :config
-  (setq bibtex-completion-bibliography
-        (concat org-directory "/bib/bibliography.bib")))
+;; (use-package! org-roam-bibtex
+;;   :hook (org-roam-mode . org-roam-bibtex-mode)
+;;   :bind (:map org-mode-map
+;;           (("C-c n a" . orb-note-actions))))
+;; (use-package! helm-bibtex
+;;   :config
+;;   (setq bibtex-completion-bibliography
+;;         (concat org-directory "/bib/bibliography.bib")))
 
-(use-package! org-ref
-  :config
-  (setq
-   org-ref-bibliography-notes (concat org-directory "/bib/notes.org")
-   org-ref-default-bibliography bibtex-completion-bibliography
-   org-ref-pdf-directory (concat org-directory "/bib/pdfs/")))
-(use-package! bibtex-completion
-  :config
-  (setq bibtex-completion-library-path (list (concat org-directory "/bib/pdfs/"))
-        bibtex-completion-pdf-field "file"))
+;; (use-package! org-ref
+;;   :config
+;;   (setq
+;;    org-ref-bibliography-notes (concat org-directory "/bib/notes.org")
+;;    org-ref-default-bibliography bibtex-completion-bibliography
+;;    org-ref-pdf-directory (concat org-directory "/bib/pdfs/")))
+;; (use-package! bibtex-completion
+;;   :config
+;;   (setq bibtex-completion-library-path (list (concat org-directory "/bib/pdfs/"))
+;;         bibtex-completion-pdf-field "file"))
 ;; (use-package! flymake-hlint
 ;;   :config
 ;;   (add-hook 'haskell-mode-hook 'flymake-hlint-load))

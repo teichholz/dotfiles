@@ -102,16 +102,11 @@
 
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
-(setq magit-git-executable "/usr/bin/git")
-
 (setq enable-local-variables :all)
 (setq latex-run-command "latex -shell-escape")
 
 
 (setq haskell-process-type 'stack-ghci)
-(setq haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans"))
-
-
 (setq haskell-compile-cabal-build-command "stack run")
 
 (setq ispell-dictionary "de_DE")
