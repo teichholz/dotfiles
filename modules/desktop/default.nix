@@ -20,7 +20,7 @@ let myXmind = pkgs.xmind.override { gtk2 = pkgs.gtk3-x11; }; in
     thunderbird
     drawio # diagrams
     vym # mindmap
-    vue # mindmap
+    gnome3.zenity
   ];
 
   fonts = {

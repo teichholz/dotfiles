@@ -17,7 +17,8 @@ in {
     environment.systemPackages = with pkgs; [
       ## Emacs itself
       binutils       # native-comp needs 'as', provided by this
-      emacsPgtkGcc   # 28 + pgtk + native-comp
+      # emacsPgtkGcc   # 28 + pgtk + native-comp
+      emacs
 
 
       ## Doom dependencies
@@ -29,6 +30,7 @@ in {
       fd                  # faster projectile indexing
       imagemagick         # for image-dired
       zstd                # for undo-fu-session/undo-tree compression
+      graphviz            # org-roam
 
       ## Module dependencies
       # :checkers spell
@@ -52,7 +54,7 @@ in {
     services.emacs.package = pkgs.emacsPgtkGcc;
 
     env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
-    env.EDITOR = "emacs";
+    env.EDITOR = "emacsclient";
 
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
 

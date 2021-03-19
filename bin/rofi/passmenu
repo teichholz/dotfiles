@@ -7,62 +7,68 @@
 
 ROFI_CMD='rofi -dmenu -theme theme/passmenu.rasi'
 MSG_CMD='notify-send'
+PROG="bw"
+
+# stupid obfuscation
+EMAILPRE="tim.eichholz98"
+EMAIL="$EMAILPRE@web.de"
+
 set -e
 shopt -s nullglob globstar
 
-for prog in xclip pass; do
+askpass () {
+  zenity --password --title="sudo password prompt" --timeout=10
+}
+
+# checks if alle dependencies are there
+for prog in xclip bw zenity; do
   if ! command -v "$prog" >/dev/null; then
     >&2 echo "$prog not installed, aborting"
     exit 1
   fi
 done
 
-if [[ $1 == -r ]]; then
-    resume=1; shift
+
+SESSIONFILE="/tmp/.bwsession"
+
+STATUS="$(bw status | jq '.status' | xargs)"
+LOCKED="locked"
+UNAUTH="unauthenticated"
+
+
+if [ $STATUS == $UNAUTH ]; then
+  [ -f $SESSIONFILE ] && rm $SESSIONFILE
 fi
 
-url=
-# Get qutebrowser's current url
-win=$(xdotool getactivewindow)
-if [[ -n $win ]]; then
-  winname=$(xdotool getwindowname $win)
-  if [[ $winname =~ " - Mozilla Firefox$" ]]; then
-    url=${winname% - Mozilla*}
-    url=${url##* - }
-    while (( ${#url//[^.]/} > 1 )); do
-      url=${url#*.}
-    done
-  fi
+if [ $STATUS == $LOCKED ] && [ ! -f $SESSIONFILE ]; then
+  PASS=$(askpass)
+  SESSIONKEY=$(bw unlock "$PASS" --raw)
+  echo $SESSIONKEY > $SESSIONFILE
+elif [ $STATUS == $UNAUTH ]; then
+  PASS=$(askpass)
+  SESSIONKEY=$(bw login "$EMAIL" "$PASS" --raw)
+  echo $SESSIONKEY > $SESSIONFILE
 fi
 
-LAST_ENTRY_FILE=/tmp/_upm
-if [[ -n $resume && -f $LAST_ENTRY_FILE ]]; then
-  entry="$(<$LAST_ENTRY_FILE)"
+# vault is unlocked
+if [ -f $SESSIONFILE ]; then
+  SESSIONKEY="$(cat $SESSIONFILE)"
+fi
+
+export BW_SESSION=$SESSIONKEY
+
+_do_rofi() {
+  # remove unwanted quotes with tr
+  NAME=$(bw list items | jq '.[] | .name' | tr -d '"' | $ROFI_CMD)
+  # get last field with special awk register NF
+  bw get password $NAME | awk '{print $NF}'
+}
+
+PASS=$(_do_rofi)
+
+if [ -n $PASS ]; then
+  $MSG_CMD "Success!" "Password has been copied to clipboard"
+  echo $PASS | xclip -selection clipboard -in
 else
-  prefix=${PASSWORD_STORE_DIR-~/.password-store}
-  password_files=( "$prefix"/**/*.gpg  )
-  password_files=( "${password_files[@]#"$prefix"/}"  )
-  password_files=( "${password_files[@]%.gpg}" )
-  entry=$(printf "%s\n" "${password_files[@]}" | $ROFI_CMD -p "..." -filter "$url")
-fi
-
-if [[ -z $entry ]]; then
-  $MSG_CMD "Error!" "Failed to select $entry"
-  exit 1
-fi
-
-echo "$entry" >/tmp/_upm
-secrets="$(pass show "$entry")"
-if [[ -n $secrets ]]; then
-  fields=$(awk -F': ' 'NR>1 && !/^otpauth:/ {print $1}' <<<"$secrets")
-  field=$(printf "password\n%s\notp\n" "${fields[@]}" | $ROFI_CMD -p "$entry")
-  case $field in
-    password) pass -c "$entry" ;;
-    otp) printf "%s" "$(pass otp -c "$entry")" ;;
-    *) printf "%s" "$(awk -v "key=$field:" '$1 == key {print $2}' <<<"$secrets")" | xclip -selection clipboard -in ;;
-  esac
-  $MSG_CMD "Success!" "Copied <b>$entry/$field</b> to clipboard for 45s"
-else
-  $MSG_CMD "Error!" "Failed to retrieve $entry"
-  exit 2
+  $MSG_CMD "Error!" "Failed to retrieve password"
 fi

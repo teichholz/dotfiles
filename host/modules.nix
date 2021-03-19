@@ -13,6 +13,7 @@
         };
         dev = {
             haskell.enable = true;
+            scheme.enable = false;
         };
         desktop = {
             apps = {

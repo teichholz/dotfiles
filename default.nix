@@ -34,6 +34,7 @@ with inputs;
 
   # Use the latest kernel
   boot.kernelPackages = pkgs.linuxPackages_5_10;
+  boot.cleanTmpDir = true;
 
   boot.loader = {
     efi.canTouchEfiVariables = true;

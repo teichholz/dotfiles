@@ -31,6 +31,9 @@ super + space
 super + w
 	windowmenu
 
+super + p
+	passmenu
+
 super + backslash
 	bookmarkmenu
 
