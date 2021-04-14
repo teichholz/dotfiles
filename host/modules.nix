@@ -13,7 +13,9 @@
         };
         dev = {
             haskell.enable = true;
-            scheme.enable = false;
+            scheme.enable = true;
+            clojure.enable = true;
+            java.enable = true;
         };
         desktop = {
             apps = {

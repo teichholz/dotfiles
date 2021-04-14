@@ -21,6 +21,7 @@ let myXmind = pkgs.xmind.override { gtk2 = pkgs.gtk3-x11; }; in
     drawio # diagrams
     vym # mindmap
     gnome3.zenity
+    zulip # work
   ];
 
   fonts = {

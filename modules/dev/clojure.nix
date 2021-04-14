@@ -14,6 +14,8 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
+      nodejs
+      clj-kondo
       clojure
       joker
       leiningen
