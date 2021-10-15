@@ -16,6 +16,11 @@
             scheme.enable = true;
             clojure.enable = true;
             java.enable = true;
+            ocaml.enable = true;
+            rust.enable = true;
+            tex.enable = true;
+            crystal.enable = true;
+            scala.enable = true;
         };
         desktop = {
             apps = {
@@ -26,6 +31,7 @@
                 nautilus.enable = true;
                 alacritty.enable = true;
                 obsidian.enable = true;
+                godot.enable = true;
             };
             browsers = {
                 qutebrowser.enable = true;

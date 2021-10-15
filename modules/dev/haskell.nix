@@ -19,7 +19,7 @@ in {
       stack
       hlint # linter
       ormolu # formatting
-      haskell-language-server
+      (haskell-language-server.override { supportedGhcVersions = ["8104"]; })
     ];
 
   };

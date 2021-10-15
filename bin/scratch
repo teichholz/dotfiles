@@ -6,7 +6,6 @@
 SCRID=scratch
 WD=${2:-$HOME}
 CMD=${1:-"tmux new-session -A -s scratch -n scratch"}
-echo "cmd is: $CMD"
 focused=$(xdotool getactivewindow)
 scratch=$(xdotool search --onlyvisible --classname $SCRID)
 if [[ -n $scratch ]]; then

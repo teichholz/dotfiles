@@ -13,6 +13,7 @@ in {
       scala
       jdk
       sbt
+      metals
     ];
   };
 }

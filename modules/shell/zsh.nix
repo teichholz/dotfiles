@@ -53,6 +53,8 @@ in {
       tree
       killall
       at
+      dmenu
+      ledger
     ];
 
     env = {

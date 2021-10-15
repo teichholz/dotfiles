@@ -31,8 +31,8 @@ super + space
 super + w
 	windowmenu
 
-super + p
-	passmenu
+super + {_, ctrl +}p
+	{ passmenu, projectsmenu }
 
 super + backslash
 	bookmarkmenu

@@ -22,6 +22,10 @@ let myXmind = pkgs.xmind.override { gtk2 = pkgs.gtk3-x11; }; in
     vym # mindmap
     gnome3.zenity
     zulip # work
+    wmname
+    vlc
+    appimage-run
+    tdesktop # telegram
   ];
 
   fonts = {

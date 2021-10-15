@@ -22,6 +22,7 @@ in {
       gdb
       cmake
       llvmPackages.libcxx
+      boehmgc
     ];
   };
 }

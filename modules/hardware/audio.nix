@@ -9,8 +9,12 @@ in {
   };
 
   config = mkIf cfg.enable {
+
+    user.packages = with pkgs; [pavucontrol];
+
     sound.enable = true;
     hardware.pulseaudio.enable = true;
+    hardware.bluetooth.enable = true;
 
     user.extraGroups = [ "audio" ];
   };
