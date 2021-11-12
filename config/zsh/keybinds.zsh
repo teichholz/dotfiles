@@ -41,8 +41,6 @@ if is-at-least 5.0.8; then
 fi
 
 # Open current prompt in external editor
-autoload -Uz edit-command-line; zle -N edit-command-line
-bindkey '^ ' edit-command-line
 bindkey -M viins '^n' history-substring-search-down
 bindkey -M viins '^p' history-substring-search-up
 bindkey -M viins '^s' history-incremental-pattern-search-backward

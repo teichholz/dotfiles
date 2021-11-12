@@ -9,6 +9,7 @@ fi
 ## General
 export _FASD_DATA="$XDG_CACHE_HOME/fasd"
 export _FASD_VIMINFO="$XDG_CACHE_HOME/viminfo"
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Treat these characters as part of a word.
 WORDCHARS='_-*?[]~&.;!#$%^(){}<>'

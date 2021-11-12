@@ -5,7 +5,7 @@ with lib;
     networking.hostName = "nixos";
 
     i18n.defaultLocale = "de_DE.UTF-8";
-    time.timeZone = "Germany/Berlin";
+    time.timeZone = "Europe/Berlin";
 
     location.latitude = 51.473;
     location.longitude = 7.479;

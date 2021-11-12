@@ -26,6 +26,7 @@ let myXmind = pkgs.xmind.override { gtk2 = pkgs.gtk3-x11; }; in
     vlc
     appimage-run
     tdesktop # telegram
+    geogebra6
   ];
 
   fonts = {

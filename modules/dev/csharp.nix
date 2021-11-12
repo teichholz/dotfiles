@@ -12,6 +12,8 @@ in {
     user.packages = with pkgs; [
       mono
       jetbrains.rider
+      omnisharp-roslyn
+      dotnetCorePackages.sdk_3_0
     ];
   };
 }

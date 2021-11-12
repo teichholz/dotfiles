@@ -1,4 +1,4 @@
-{options, config, lib, pkgs, ...}:
+{options, config, lib, pkgs, pkgs', ...}:
 with lib;
 with lib.my;
 let cfg = config.modules.desktop.gnome; in
@@ -8,10 +8,22 @@ let cfg = config.modules.desktop.gnome; in
   };
 
   config = mkIf cfg.enable {
-    services.xserver.enable = true;
-    services.xserver.displayManager.gdm = {
-      enable = true;
+    services = {
+      xserver = {
+        enable = true;
+        displayManager.gdm.enable = true;
+        desktopManager.gnome3.enable = true;
+      };
+      # use gnomes builtin night mode
+      # redshift = {
+      #   enable = true;
+      #   temperature.night = 2500;
+      # };
     };
-    services.xserver.desktopManager.gnome.enable = true;
+
+    environment.systemPackages = with pkgs; [
+      gnome3.gnome-tweaks
+      gnomeExtensions.dash-to-dock
+    ];
   };
 }

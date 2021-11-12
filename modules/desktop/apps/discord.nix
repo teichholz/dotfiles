@@ -1,4 +1,4 @@
-{ config, options, lib, pkgs, ... }:
+{ config, options, lib, pkgs', ... }:
 
 with lib;
 with lib.my;
@@ -9,7 +9,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs; [
+    user.packages = with pkgs'; [
       # If not installed from the bleeding edge, Discord will sometimes
       # soft-lock itself on a "there's an update for discord" screen.
       discord

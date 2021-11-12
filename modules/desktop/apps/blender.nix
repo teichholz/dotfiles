@@ -11,6 +11,14 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       blender
+      (makeDesktopItem {
+        name = "Blender";
+        desktopName = "Blender";
+        genericName = "Open Blender";
+        icon = "blender";
+        exec = "blender";
+        categories = "Graphics";
+      })
     ];
   };
 }

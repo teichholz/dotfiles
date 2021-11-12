@@ -42,6 +42,7 @@ in {
       nix-zsh-completions
       bat
       mdcat # cat for markdown
+      pandoc
       exa
       fasd
       fd

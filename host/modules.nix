@@ -21,6 +21,7 @@
             tex.enable = true;
             crystal.enable = true;
             scala.enable = true;
+            csharp.enable = true;
         };
         desktop = {
             apps = {
@@ -32,11 +33,10 @@
                 alacritty.enable = true;
                 obsidian.enable = true;
                 godot.enable = true;
+                blender.enable = true;
             };
-            browsers = {
-                qutebrowser.enable = true;
-            };
-            bspwm.enable = true;
+            bspwm.enable = false;
+            gnome.enable = true;
             kde.enable = false;
         };
         theme.active = "alucard";
