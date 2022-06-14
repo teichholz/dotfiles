@@ -12,6 +12,7 @@ in {
     user.packages = with pkgs; [
       godot
       godot-mono
+      godot-kotlin
 
       (makeDesktopItem {
         name = "godot-mono";

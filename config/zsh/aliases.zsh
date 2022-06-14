@@ -44,12 +44,27 @@ cat() {
   ${CAT} "$1"
 };
 
-
-
-
 take() {
-  mkdir "$1" && cd "$1";
+  mkdir -p "$1" && cd "$1";
 }; compdef take=mkdir
+
+ig() {
+  $* &> /dev/null
+}
+
+e() {
+  ig emacs $* &
+}
+
+ec() {
+  ig emacsclient $* &
+}
+
+org() {
+  file=$(mktemp)
+  p > $file
+  pandoc --from mediawiki --to org $file | y
+}
 
 r() {
   local time=$1; shift;

@@ -1,4 +1,4 @@
-{ config, options, lib, pkgs, ... }:
+{ config, options, lib, pkgs, pkgs', ... }:
 
 with lib;
 with lib.my;
@@ -11,7 +11,8 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       jdk11
-      jetbrains.idea-community
+      pkgs'.maven
+      gradle
     ];
   };
 }

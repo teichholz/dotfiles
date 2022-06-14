@@ -20,9 +20,9 @@ in {
       clang-tools
       ccls
       gcc
+      cmake
       bear
       gdb
-      cmake
       llvmPackages.libcxx
       boehmgc
     ];

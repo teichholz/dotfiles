@@ -10,7 +10,7 @@ focused=$(xdotool getactivewindow)
 scratch=$(xdotool search --onlyvisible --classname $SCRID)
 if [[ -n $scratch ]]; then
     if [[ $focused == $scratch ]]; then
-        xdotool windowkill $scratch
+        xdotool windowminimize $scratch
     else
         xdotool windowactivate $scratch
     fi

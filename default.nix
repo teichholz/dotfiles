@@ -11,7 +11,7 @@ with inputs;
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
-    readOnlyStore = true;
+    readOnlyStore = false;
     nixPath = [
       "nixpkgs=${nixpkgs}"
       "dotfiles=${dotFilesDir}"
@@ -27,7 +27,6 @@ with inputs;
       nixos.flake = nixpkgs;
       nixpkgs.flake = nixpkgs;
     };
-    useSandbox = true;
   };
   system.configurationRevision = mkIf (self ? rev) self.rev;
   system.stateVersion = "20.09";

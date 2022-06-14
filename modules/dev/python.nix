@@ -9,6 +9,14 @@
 with lib;
 with lib.my;
 let cfg = config.modules.dev.python;
+in
+let
+  my-python-packages = python-packages: with python-packages; [
+    pandas
+    vtk
+    pygame
+  ];
+  mypy = pkgs.python38.withPackages my-python-packages;
 in {
   options.modules.dev.python = {
     enable = mkBoolOpt true;
@@ -16,13 +24,16 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      python37
-      python37Packages.pip
-      python37Packages.ipython
-      python37Packages.black
-      python37Packages.setuptools
-      python37Packages.pylint
-      python37Packages.poetry
+      mypy
+      nodePackages.pyright # lsp and type inference
+      python38Packages.jupyter
+      python38Packages.jupyter_core
+      python38Packages.jupyterlab
+      python38Packages.pip
+      python38Packages.black
+      python38Packages.setuptools
+      python38Packages.pylint
+      python38Packages.poetry
     ];
 
     env.IPYTHONDIR      = "$XDG_CONFIG_HOME/ipython";

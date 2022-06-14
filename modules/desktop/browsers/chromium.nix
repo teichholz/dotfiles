@@ -12,6 +12,7 @@ in {
     {
       user.packages = with pkgs; [
         chromium
+        chromedriver
         (makeDesktopItem {
           name = "chromium-private";
           desktopName = "Chromium (Private)";

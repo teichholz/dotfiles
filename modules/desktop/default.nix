@@ -24,6 +24,7 @@ let myXmind = pkgs.xmind.override { gtk2 = pkgs.gtk3-x11; }; in
     zulip # work
     wmname
     vlc
+    zeal
     appimage-run
     tdesktop # telegram
     geogebra6

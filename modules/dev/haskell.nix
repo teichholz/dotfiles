@@ -4,7 +4,7 @@
 # Liking C/C++ seems to be an unpopular opinion. It's my guilty secret, so don't
 # tell anyone pls.
 
-{ config, options, lib, pkgs, ... }:
+{ config, options, lib, pkgs, pkgs', ... }:
 
 with lib;
 with lib.my;

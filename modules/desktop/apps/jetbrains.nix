@@ -1,4 +1,4 @@
-{ config, options, lib, pkgs, ... }:
+{ config, options, lib, pkgs', ... }:
 
 with lib;
 
@@ -10,8 +10,8 @@ in {
   };
 
   config = {
-    user.packages = with pkgs; [
-      jetbrains.idea-ultimate
+    user.packages = with pkgs'; [
+      jetbrains.idea-community
       jetbrains.clion
     ];
   };

@@ -15,6 +15,7 @@
             haskell.enable = true;
             scheme.enable = true;
             clojure.enable = true;
+            python.enable = true;
             java.enable = true;
             ocaml.enable = true;
             rust.enable = true;

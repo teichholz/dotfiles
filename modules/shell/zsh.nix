@@ -1,4 +1,4 @@
-{ config, options, pkgs, lib, ... }:
+{ config, options, pkgs, pkgs', lib, ... }:
 
 with lib;
 with lib.my;
@@ -55,8 +55,9 @@ in {
       killall
       at
       dmenu
+      entr
       ledger
-    ];
+    ] ++ (with pkgs'; [sage]);
 
     env = {
       ZDOTDIR     = "$XDG_CONFIG_HOME/zsh";
