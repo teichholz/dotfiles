@@ -1,18 +1,26 @@
 self: super: {
-  godot-mono = with super;
+  godot-kotlin = with super;
   let
     arch = "64";
     pkg = stdenv.mkDerivation  {
-      name = "godot-mono-unwrapped";
+      name = "godot-kotlin-unwrapped";
       buildInputs = [ unzip ];
       unpackPhase = "unzip $src";
-      version = version;
+      desktopItems =
+        [(makeDesktopItem {
+          name = "godot-kotlin";
+          desktopName = "Godot (Kotlin)";
+          genericName = "Open Godot Kotlin";
+          icon = "godot";
+          exec = "godot-kotlin";
+        })];
       src = fetchurl {
         url = "https://github.com/utopia-rise/godot-kotlin-jvm/releases/download/0.3.4-3.4.4/godot-kotlin-jvm_editor_x11_.zip";
-        sha256 = "sha256-imyJ/oYjZ++EeEdN99JrUuBapMr40PSuGWcuRTEc0Qw=";
+        sha256 = "sha256-m0saSTuAFTPk0FgEWJ9Oo6A7Qc0+xQ17tslzj2PgWks=";
       };
       installPhase = ''
         cp -r . $out
+        chmod a+x "$out/godot.x11.opt.tools.${arch}"
       '';
     };
   in buildFHSUserEnv {

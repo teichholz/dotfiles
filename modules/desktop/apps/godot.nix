@@ -15,12 +15,21 @@ in {
       godot-kotlin
 
       (makeDesktopItem {
+        name = "godot-kotlin";
+        desktopName = "Godot (Kotlin)";
+        genericName = "Open Godot Kotlin";
+        icon = "godot";
+        exec = "godot-kotlin";
+      })
+
+      (makeDesktopItem {
         name = "godot-mono";
         desktopName = "Godot (Mono)";
         genericName = "Open Godot Mono";
         icon = "godot";
         exec = "godot-mono";
       })
+
     ];
   };
 }
