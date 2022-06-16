@@ -14,12 +14,18 @@ in {
       godot-mono
       godot-kotlin
 
+      (writeScriptBin "godot-kotlin-wrapper" ''
+        #!${stdenv.shell}
+        exec JAVA_HOME=$JAVA_HOME godot-kotlin
+      '')
+
       (makeDesktopItem {
         name = "godot-kotlin";
         desktopName = "Godot (Kotlin)";
         genericName = "Open Godot Kotlin";
         icon = "godot";
-        exec = "godot-kotlin";
+        exec = "godot-kotlin-wrapper";
+        categories = "Application";
       })
 
       (makeDesktopItem {

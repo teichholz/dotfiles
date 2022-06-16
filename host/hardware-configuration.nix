@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "ahci" "xhci_pci" "usb_storage" "usbhid" "sd_mod" ];
@@ -13,11 +14,6 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  modules.hardware = {
-    ergodox.enable = true;
-    nvidia.enable = true;
-    audio.enable = true;
-  };
 
   #Displays
   services.xserver = {
@@ -25,28 +21,6 @@
                     { output= "DP-0";
                       primary = true;
                       monitorConfig = "Option \"RightOf\" \"DP-2\""; } ];
-    # This must be done manually to ensure my screen spaces are arranged exactly
-    # as I need them to be *and* the correct monitor is "primary". Using
-    # xrandrHeads does not work.
-    #monitorSection = ''
-      #VendorName  "Unknown"
-      #Identifier "lg"
-      #Option "Primary" "true"
-      #RightOf "RightOf" "DP-2"
-#
-    #'';
-    #deviceSection = ''
-      #Option "DP-0" "lg"
-    #'';
-
-    # screenSection = ''
-    #   Option "metamodes" "HDMI-0: nvidia-auto-select +1920+0, DVI-I-1: nvidia-auto-select +0+180, DVI-D-0: nvidia-auto-select +4480+180"
-    #   Option "SLI" "Off"
-    #   Option "MultiGPU" "Off"
-    #   Option "BaseMosaic" "off"
-    #   Option "Stereo" "0"
-    #   Option "nvidiaXineramaInfoOrder" "DFP-1"
-    # '';
   };
 
   fileSystems."/" =

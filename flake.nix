@@ -5,7 +5,6 @@
       # Two inputs so I can track them separately at different rates.
       nixpkgs.url          = "nixpkgs/nixos-unstable";
       nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
-
       home-manager.url   = "github:rycee/home-manager/master";
       # home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -32,7 +31,7 @@
               ./.
               ./host
             ] ++ (lib.my.mapModulesRec' (toString ./modules) import);
-            specialArgs = { inherit inputs pkgs pkgs' lib home-manager;};
+            specialArgs = { inherit inputs pkgs pkgs' lib home-manager nixos-hardware;};
           };
       };
 }

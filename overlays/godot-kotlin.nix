@@ -6,14 +6,6 @@ self: super: {
       name = "godot-kotlin-unwrapped";
       buildInputs = [ unzip ];
       unpackPhase = "unzip $src";
-      desktopItems =
-        [(makeDesktopItem {
-          name = "godot-kotlin";
-          desktopName = "Godot (Kotlin)";
-          genericName = "Open Godot Kotlin";
-          icon = "godot";
-          exec = "godot-kotlin";
-        })];
       src = fetchurl {
         url = "https://github.com/utopia-rise/godot-kotlin-jvm/releases/download/0.3.4-3.4.4/godot-kotlin-jvm_editor_x11_.zip";
         sha256 = "sha256-m0saSTuAFTPk0FgEWJ9Oo6A7Qc0+xQ17tslzj2PgWks=";
