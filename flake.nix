@@ -13,7 +13,7 @@
       nixos-hardware.url = "github:nixos/nixos-hardware";
     };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware , ... }:
     let lib = nixpkgs.lib.extend (self: super: { my = import ./lib { inherit pkgs inputs; lib = self; }; });
         system = "x86_64-linux";
         pkgs = import nixpkgs { inherit system; overlays = (lib.my.mapModules' ./overlays import) ; config.allowUnfree=true;};
