@@ -57,7 +57,8 @@ in {
       dmenu
       entr
       ledger
-    ] ++ (with pkgs'; [sage]);
+      appimage-run
+    ] ++ (with pkgs'; [sageWithDoc]);
 
     env = {
       ZDOTDIR     = "$XDG_CONFIG_HOME/zsh";

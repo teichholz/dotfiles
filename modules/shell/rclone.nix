@@ -5,7 +5,7 @@ with lib.my;
 let cfg = config.modules.shell.rclone;
 in {
   options.modules.shell.rclone = {
-    enable = true;
+    enable = mkBoolOpt true;
   };
 
   config = mkIf cfg.enable {
