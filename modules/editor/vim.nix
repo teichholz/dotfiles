@@ -10,8 +10,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      neovim
-    ];
+    programs.neovim.enable = true;
+    # programs.neovim.coc.enable = true;
+    # programs.neovim.vialias = true;
+
+    home.configFile = {
+      "nvim" = { source = "${configDir}/nvim"; recursive = true; };
+    };
   };
 }
