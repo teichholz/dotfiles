@@ -14,7 +14,8 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      unity3d
+      # unity3d
+      unityhub
     ];
   };
 }
