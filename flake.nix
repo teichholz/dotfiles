@@ -3,10 +3,10 @@
     {
       # Core dependencies.
       # Two inputs so I can track them separately at different rates.
-      nixpkgs.url          = "nixpkgs/nixos-unstable";
+      nixpkgs.url          = "github:nixos/nixpkgs/nixos-unstable";
       nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
-      home-manager.url   = "github:rycee/home-manager/master";
-      # home-manager.inputs.nixpkgs.follows = "nixpkgs";
+      home-manager.url   = "github:nix-community/home-manager";
+      home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
       # Extras
       emacs-overlay.url  = "github:nix-community/emacs-overlay";

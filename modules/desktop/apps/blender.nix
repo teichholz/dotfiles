@@ -17,7 +17,7 @@ in {
         genericName = "Open Blender";
         icon = "blender";
         exec = "blender";
-        categories = "Graphics";
+        categories = ["Graphics"];
       })
     ];
   };

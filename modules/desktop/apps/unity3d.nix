@@ -9,13 +9,21 @@ with lib.my;
 let cfg = config.modules.desktop.apps.unity3d;
 in {
   options.modules.desktop.apps.unity3d = {
-    enable = mkBoolOpt false;
+    enable = mkBoolOpt true;
   };
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       # unity3d
       unityhub
+      (makeDesktopItem {
+        name = "unityhub";
+        desktopName = "Unityhub";
+        genericName = "Open Unityhub";
+        icon = "unityhub";
+        exec = "unityhub-2.3.2";
+        categories = ["Graphics"];
+      })
     ];
   };
 }

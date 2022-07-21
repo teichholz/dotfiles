@@ -16,14 +16,14 @@ in {
 
     user.packages = with pkgs; [
       xst  # st + nice-to-have extensions
-      (makeDesktopItem {
-        name = "xst";
-        desktopName = "Suckless Terminal";
-        genericName = "Default terminal";
-        icon = "utilities-terminal";
-        exec = "${xst}/bin/xst";
-        categories = "Development;System;Utility";
-      })
+      # (makeDesktopItem {
+      #   name = "xst";
+      #   desktopName = "Suckless Terminal";
+      #   genericName = "Default terminal";
+      #   icon = "utilities-terminal";
+      #   exec = "${xst}/bin/xst";
+      #   categories = "Development;System;Utility";
+      # })
     ];
   };
 }

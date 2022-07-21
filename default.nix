@@ -31,6 +31,9 @@ with inputs;
   system.configurationRevision = mkIf (self ? rev) self.rev;
   system.stateVersion = "20.09";
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-14.2.9"
+  ];
   # Use the latest kernel
   boot.kernelPackages = pkgs.linuxPackages_5_10;
   boot.cleanTmpDir = true;

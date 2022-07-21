@@ -6,6 +6,7 @@ with lib;
 with lib.my;
 let cfg = config.modules.theme;
 in {
+
   config = mkIf (cfg.active == "alucard") (mkMerge [
     # Desktop-agnostic configuration
     {
@@ -20,15 +21,7 @@ in {
         };
 
         # shell.zsh.rcFiles  = [ ./config/zsh/prompt.zsh ];
-        shell.tmux.rcFiles = [ ./config/tmux.conf ];
-        desktop.browsers = {
-          qutebrowser.userStyles = concatMapStringsSep "\n" readFile
-            (map toCSSFile [
-              ./config/qutebrowser/userstyles/monospace-textareas.scss
-              ./config/qutebrowser/userstyles/stackoverflow.scss
-              ./config/qutebrowser/userstyles/xkcd.scss
-            ]);
-        };
+        # shell.tmux.rcFiles = [ ./config/tmux.conf ];
       };
     }
 
@@ -44,7 +37,7 @@ in {
           fira-code-symbols
           jetbrains-mono
           siji
-          font-awesome-ttf
+          font-awesome
         ];
         fontconfig.defaultFonts = {
           sansSerif = ["Fira Sans"];
@@ -64,21 +57,10 @@ in {
         inactiveOpacity = 0.92;
         settings = {
           shadow-radius = 12;
-          # blur-background = true;
-          # blur-background-frame = true;
-          # blur-background-fixed = true;
           blur-kern = "7x7box";
           blur-strength = 320;
         };
       };
-
-      # Login screen theme
-      services.xserver.displayManager.lightdm.greeters.mini.extraConfig = ''
-        text-color = "#ff79c6"
-        password-background-color = "#1E2029"
-        window-color = "#181a23"
-        border-color = "#181a23"
-      '';
 
       # Other dotfiles
       home.configFile = with config.modules; mkMerge [
@@ -86,27 +68,11 @@ in {
           # Sourced from sessionCommands in modules/themes/default.nix
           "xtheme/90-theme".source = ./config/Xresources;
         }
-        (mkIf desktop.bspwm.enable {
-          "bspwm/rc.d/polybar".source = ./config/polybar/run.sh;
-          "bspwm/rc.d/theme".source = ./config/bspwmrc;
-        })
         (mkIf desktop.apps.rofi.enable {
           "rofi/theme" = { source = ./config/rofi; recursive = true; };
         })
-        (mkIf (desktop.bspwm.enable) {
-          "polybar" = { source = ./config/polybar; recursive = true; };
-          "dunst/dunstrc".source = ./config/dunstrc;
-        })
-        (mkIf desktop.browsers.qutebrowser.enable {
-          "qutebrowser/extra/theme.py".source = ./config/qutebrowser/theme.py;
-        })
       ];
 
-    home-manager = {
-      users.${config.user.name} = {
-        xsession.windowManager.bspwm.extraConfig = builtins.readFile ./config/polybar/run.sh + builtins.readFile ./config/bspwmrc;
-      };
-    };
     })
   ]);
 }

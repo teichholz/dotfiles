@@ -13,7 +13,7 @@ in {
       mono
       jetbrains.rider
       omnisharp-roslyn
-      dotnetCorePackages.sdk_3_0
+      dotnetCorePackages.sdk_5_0
     ];
   };
 }

@@ -17,17 +17,17 @@ let myXmind = pkgs.xmind.override { gtk2 = pkgs.gtk3-x11; }; in
     xdotool
     xorg.xwininfo
     zotero
-    thunderbird
-    drawio # diagrams
-    vym # mindmap
+    # thunderbird
+    # drawio # diagrams
+    # vym # mindmap
     gnome3.zenity
-    zulip # work
+    # zulip # work
     wmname
     vlc
-    zeal
+    # zeal
     appimage-run
-    tdesktop # telegram
-    geogebra6
+    # tdesktop # telegram
+    # geogebra6
   ];
 
   fonts = {

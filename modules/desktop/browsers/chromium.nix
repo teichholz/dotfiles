@@ -19,7 +19,7 @@ in {
           genericName = "Open a private Chromium window";
           icon = "chromium";
           exec = "${chromium}/bin/chromium --incognito";
-          categories = "Network";
+          categories = ["Network"];
         })
       ];
       env.XDG_DESKTOP_DIR = "$HOME/";

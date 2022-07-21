@@ -15,12 +15,6 @@ in {
       calibre
       evince
       zathura
-      (makeDesktopItem {
-        name = "evince";
-        desktopName = "Evince";
-        icon = "evince";
-        exec = "${pkgs.evince}/bin/evince";
-      })
     ];
 
     home.configFile."zathura".source = "${configDir}/zathura";

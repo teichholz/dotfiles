@@ -25,7 +25,7 @@ self: super: {
         dotnetCorePackages.sdk_5_0
         libGL
         libpulseaudio
-        libudev
+        udev
         xorg.libX11
         xorg.libXcursor
         xorg.libXext

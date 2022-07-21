@@ -25,7 +25,7 @@ in {
         genericName = "Open Godot Kotlin";
         icon = "godot";
         exec = "godot-kotlin-wrapper";
-        categories = "Application";
+        categories = ["Application"];
       })
 
       (makeDesktopItem {

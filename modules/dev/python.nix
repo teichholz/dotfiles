@@ -12,9 +12,9 @@ let cfg = config.modules.dev.python;
 in
 let
   my-python-packages = python-packages: with python-packages; [
-    pandas
-    vtk
-    pygame
+    # pandas
+    # vtk
+    # pygame
   ];
   mypy = pkgs.python38.withPackages my-python-packages;
 in {
@@ -25,15 +25,16 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       mypy
-      nodePackages.pyright # lsp and type inference
-      python38Packages.jupyter
-      python38Packages.jupyter_core
-      python38Packages.jupyterlab
-      python38Packages.pip
-      python38Packages.black
-      python38Packages.setuptools
-      python38Packages.pylint
-      python38Packages.poetry
+      virtualenv
+      # nodePackages.pyright # lsp and type inference
+      # python38Packages.jupyter
+      # python38Packages.jupyter_core
+      # python38Packages.jupyterlab
+      # python38Packages.pip
+      # python38Packages.black
+      # python38Packages.setuptools
+      # python38Packages.pylint
+      # python38Packages.poetry
     ];
 
     env.IPYTHONDIR      = "$XDG_CONFIG_HOME/ipython";
