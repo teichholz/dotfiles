@@ -1,14 +1,27 @@
-# Stop TRAMP (in Emacs) from hanging or term/shell from echoing back commands
-if [[ $TERM == dumb || -n $INSIDE_EMACS ]]; then
-  unsetopt zle prompt_cr prompt_subst
-  whence -w precmd >/dev/null && unfunction precmd
-  whence -w preexec >/dev/null && unfunction preexec
-  PS1='$ '
+# fasd
+if command -v fasd > /dev/null; then
+	export _FASD_DATA="$XDG_CACHE_HOME/fasd"
+	export _FASD_VIMINFO="$XDG_CACHE_HOME/viminfo"
+	export _FASD_BACKENDS=("recently-used" "current" "viminfo")
+	_cache fasd --init auto
+fi 
+
+# zsh-vi-mode
+export ZVM_INIT_MODE=sourcing
+export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+
+#powerlvl 10k
+export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+
+# fd > find
+if command -v fd >/dev/null; then
+	export FZF_DEFAULT_OPTS="--reverse --ansi"
+	export FZF_DEFAULT_COMMAND="fd ."
+	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND -H --follow"
+	export FZF_ALT_C_COMMAND="fd -t d . $HOME"
 fi
 
 ## General
-export _FASD_DATA="$XDG_CACHE_HOME/fasd"
-export _FASD_VIMINFO="$XDG_CACHE_HOME/viminfo"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Treat these characters as part of a word.

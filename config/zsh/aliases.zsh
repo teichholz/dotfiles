@@ -12,15 +12,14 @@ alias mv='mv -i'
 alias mkdir='mkdir -p'
 alias wget='wget -c'
 alias nr='sudo nixos-rebuild'
-alias ls=exa
-alias l=exa
 alias o=xdg-open
-alias aliaser="source aliaser"
+alias o='a -e xdg-open' # quick opening files with xdg-open
+alias e='f -e nvim'
+alias v='f -t -e nvim -b viminfo'
+alias cat='bat'
 
 alias y='xclip -selection clipboard -in'
 alias p='xclip -selection clipboard -ou'
-
-alias spanish='chromium --new-window https://www.duolingo.com/learn https://www.spanishdict.com/translation https://espanol.lingolia.com/de/grammatik/zeitformen & > /dev/null'
 
 if command -v exa >/dev/null; then
   alias exa="exa --group-directories-first";
@@ -29,35 +28,12 @@ if command -v exa >/dev/null; then
   alias la="LC_COLLATE=C exa -la";
 fi
 
-cat() {
-  filename=$(basename "$1")
-  extension="${filename##*.}"
-  filename="${filename%.*}"
-  CAT=bat
-
-  if [ $extension == "md" ]; then
-    if command -v mdcat >/dev/null; then
-      CAT=mdcat
-    fi
-  fi
-
-  ${CAT} "$1"
-};
-
 take() {
   mkdir -p "$1" && cd "$1";
 }; compdef take=mkdir
 
 ig() {
   $* &> /dev/null
-}
-
-e() {
-  ig emacs $* &
-}
-
-ec() {
-  ig emacsclient $* &
 }
 
 org() {

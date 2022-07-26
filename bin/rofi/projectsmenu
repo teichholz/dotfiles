@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+F="$HOME/.config/emacs/.local/cache/projectile.projects"
+PATHS=$(cat "$F" | tr -d "\"()")
+DIR=$(for path in $PATHS; do
+           echo $path;
+       done | rofi -dmenu -i -p "~/" -theme "theme/filemenu.rasi")
+
+if [ ! -z $DIR ]; then
+CMD="tmux new-session -A -s $(basename $DIR)"
+kitty -d $DIR --name $SCRID --title $SCRID bash -c "$CMD"
+fi

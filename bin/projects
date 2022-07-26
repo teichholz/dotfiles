@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+PATHS=$(emacsclient --eval "(own/concat-strs projectile-known-projects)")
+PATHS=$(echo $PATHS | tr -d "\"")
+DIR=$(for path in $PATHS; do
+           echo $path;
+       done | rofi -dmenu -i -p "~/" -theme "theme/filemenu.rasi")
+
+CMD="tmux new-session -A -s $(basename $DIR)"
+kitty -d $DIR --name $SCRID --title $SCRID bash -c "$CMD"
