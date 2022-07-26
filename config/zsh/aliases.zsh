@@ -15,7 +15,7 @@ alias nr='sudo nixos-rebuild'
 alias o=xdg-open
 alias o='a -e xdg-open' # quick opening files with xdg-open
 alias e='f -e nvim'
-alias v='f -t -e nvim -b viminfo'
+alias v='f -e nvim'
 alias cat='bat'
 
 alias y='xclip -selection clipboard -in'

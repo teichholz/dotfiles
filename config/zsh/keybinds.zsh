@@ -42,6 +42,11 @@ bindkey '^T' fzf-file-widget
 bindkey '^R' fzf-history-widget
 
 # FASD
+bindkey '^X^A' fasd-complete
+bindkey '^X^F' fasd-complete-f
+bindkey '^X^D' fasd-complete-d
+
+# goto argument
 bindkey '^[1' beginning-of-line
 bindkey -s '^[2' '^A^F'
 bindkey -s '^[3' '^A^F^F'
@@ -51,6 +56,5 @@ bindkey -s '^[6' '^A^F^F^F^F^F'
 bindkey -s '^[7' '^A^F^F^F^F^F^F'
 bindkey -s '^[8' '^A^F^F^F^F^F^F^F'
 
-bindkey '^X^A' fasd-complete
-bindkey '^X^F' fasd-complete-f
-bindkey '^X^D' fasd-complete-d
+# vim with fzf
+bindkey -s '^V' 'nvim $(fzf)^M'
