@@ -1,5 +1,3 @@
-#!/bin/env bash
-
 source $ZDOTDIR/config.zsh
 
 if [ ! -d "$ZGEN_DIR" ]; then
@@ -40,5 +38,6 @@ if [[ $TERM != dumb ]]; then
 	[ -f $ZDOTDIR/extra.zshrc ] && source $ZDOTDIR/extra.zshrc
 
 	_cache fasd --init posix-alias zsh-{hook,{c,w}comp{,-install}}
+	eval "$(direnv hook zsh)"
 	autopair-init
 fi
